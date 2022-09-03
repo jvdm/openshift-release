@@ -115,7 +115,7 @@ tests:
       GATHER_CAPI_LOGS: "true"
     workflow: assisted-baremetal
 - as: e2e-metal-assisted-capi-periodic
-  cron: '@daily'
+  cron: 00 00 */1 * 0-5
   steps:
     cluster_profile: packet-assisted
     dependencies:

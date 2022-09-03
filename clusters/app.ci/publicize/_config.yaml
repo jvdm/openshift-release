@@ -26,8 +26,6 @@ repositories:
   openshift-priv/build-test-images: openshift/build-test-images
   openshift-priv/builder: openshift/builder
   openshift-priv/cert-manager-operator: openshift/cert-manager-operator
-  openshift-priv/cincinnati: openshift/cincinnati
-  openshift-priv/cincinnati-operator: openshift/cincinnati-operator
   openshift-priv/client-go: openshift/client-go
   openshift-priv/cloud-credential-operator: openshift/cloud-credential-operator
   openshift-priv/cloud-network-config-controller: openshift/cloud-network-config-controller
@@ -267,6 +265,7 @@ repositories:
   openshift-priv/prometheus-operator: openshift/prometheus-operator
   openshift-priv/ptp-operator: openshift/ptp-operator
   openshift-priv/redhat-subscription-injection-webhook: openshift/redhat-subscription-injection-webhook
+  openshift-priv/route-controller-manager: openshift/route-controller-manager
   openshift-priv/route-override-cni: openshift/route-override-cni
   openshift-priv/router: openshift/router
   openshift-priv/runtime-utils: openshift/runtime-utils

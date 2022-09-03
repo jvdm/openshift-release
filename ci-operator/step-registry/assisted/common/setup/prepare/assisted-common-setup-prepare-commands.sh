@@ -8,10 +8,12 @@ echo "************ assisted common setup prepare command ************"
 
 # Get packet | vsphere configuration
 # shellcheck source=/dev/null
-set +e
-source "${SHARED_DIR}/packet-conf.sh"
-source "${SHARED_DIR}/ci-machine-config.sh"
-set -e
+if source "${SHARED_DIR}/packet-conf.sh"; then
+  export IP
+  export SSH_KEY_FILE="${CLUSTER_PROFILE_DIR}/packet-ssh-key"
+else
+  source "${SHARED_DIR}/ci-machine-config.sh"
+fi
 
 mkdir -p build/ansible
 cd build/ansible
@@ -26,12 +28,6 @@ cat > packing-test-infra.yaml <<-EOF
     ansible_remote_tmp: ../tmp
     SHARED_DIR: "{{ lookup('env', 'SHARED_DIR') }}"
   tasks:
-    - name: Compress assisted-test-infra
-      community.general.archive:
-        path: ../../
-        exclude_path:
-          - ../../build
-        dest: assisted-test-infra.tgz
     - name: Ensuring assisted-additional-config existence
       ansible.builtin.file:
         path: "{{ SHARED_DIR }}/assisted-additional-config"
@@ -71,6 +67,7 @@ export CI_CREDENTIALS_DIR=/var/run/assisted-installer-bot
 echo "********** ${ASSISTED_CONFIG} ************* "
 
 cat << EOF > config.sh.j2
+export DATA_DIR={{ DATA_DIR }}
 export REPO_DIR={{ REPO_DIR }}
 export MINIKUBE_HOME={{ MINIKUBE_HOME }}
 export INSTALLER_KUBECONFIG={{ REPO_DIR }}/build/kubeconfig
@@ -131,17 +128,18 @@ export {{ item }}
 {% endif %}
 EOF
 
-cat > run_test_playbook.yaml <<-EOF
+cat > run_test_playbook.yaml <<-"EOF"
 - name: Prepare remote host
   hosts: all
   vars:
     PLATFORM: "{{ lookup('env', 'PLATFORM') }}"
     PULL_PULL_SHA: "{{ lookup('env', 'PULL_PULL_SHA') | default('master', True) }}"
     JOB_TYPE: "{{ lookup('env', 'JOB_TYPE') }}"
+    DATA_DIR: /home
     REPO_OWNER: "{{ lookup('env', 'REPO_OWNER') }}"
     REPO_NAME: "{{ lookup('env', 'REPO_NAME') }}"
-    REPO_DIR: /home/assisted
-    MINIKUBE_HOME: "{{ REPO_DIR }}/minikube_home"
+    REPO_DIR: "{{ DATA_DIR }}/assisted"
+    MINIKUBE_HOME: "{{ DATA_DIR }}/minikube_home"
     CI_CREDENTIALS_DIR: "{{ lookup('env', 'CI_CREDENTIALS_DIR') }}"
     CLUSTER_PROFILE_DIR: "{{ lookup('env', 'CLUSTER_PROFILE_DIR') }}"
     IP: "{{ lookup('env', 'IP') }}"
@@ -155,6 +153,8 @@ cat > run_test_playbook.yaml <<-EOF
     ENVIRONMENT: "{{ lookup('env', 'ENVIRONMENT') }}"
     POST_INSTALL_COMMANDS: "{{ lookup('env', 'POST_INSTALL_COMMANDS') }}"
     ASSISTED_CONFIG: "{{ lookup('env', 'ASSISTED_CONFIG') }}"
+    ASSISTED_TEST_INFRA_IMAGE: "{{ lookup('env', 'ASSISTED_TEST_INFRA_IMAGE')}}"
+    CLUSTER_TYPE: "{{ lookup('env', 'CLUSTER_TYPE')}}"
   tasks:
     - name: Fail on unsupported environment
       fail:
@@ -167,11 +167,6 @@ cat > run_test_playbook.yaml <<-EOF
       ansible.builtin.file:
         path: /usr/config
         state: absent
-    - name: Copy tar to remote
-      become: true
-      ansible.builtin.copy:
-        src: assisted-test-infra.tgz
-        dest: /root/assisted.tar.gz
     - name: Copy pull-secret to remote
       become: true
       ansible.builtin.copy:
@@ -204,6 +199,8 @@ cat > run_test_playbook.yaml <<-EOF
         - sos
         - jq
         - make
+        - podman
+        - rsync
         state: present
     - name: Restart service sysstat
       ansible.builtin.service:
@@ -212,6 +209,10 @@ cat > run_test_playbook.yaml <<-EOF
     - name: Create artifacts directory if it does not exist
       ansible.builtin.file:
         path: /tmp/artifacts
+        state: directory
+    - name: Create repo directory if it does not exist
+      ansible.builtin.file:
+        path: "{{ REPO_DIR }}"
         state: directory
     - name: Create minikube directory if it does not exist
       ansible.builtin.file:
@@ -231,11 +232,51 @@ cat > run_test_playbook.yaml <<-EOF
       - quay.io
     - debug:
         msg: "CI_REGISTRIES = {{ CI_REGISTRIES }}"
-    # NVMe makes it faster
-    - name: Save state of VNVME device to the nvme register
-      stat:
-        path: /dev/nvme0n1
-      register: nvme
+    - name: Create {{ REPO_DIR }} directory if it does not exist
+      ansible.builtin.file:
+        path: "{{ REPO_DIR }}"
+        state: directory
+    - debug:
+        var: CLUSTER_TYPE
+    - name: Customize equinix machine
+      block:
+      - name: Fetch equinix metadata
+        ansible.builtin.uri:
+          url: "https://metadata.platformequinix.com/metadata"
+          return_content: yes
+        register: equinix_metadata
+        until: equinix_metadata.status == 200
+        retries: 5
+        delay: 5
+      - name: Setup working directory for machine type m3.large.x86
+        ansible.builtin.shell: |
+          mkfs.xfs -f /dev/nvme0n1
+          mount /dev/nvme0n1 {{ REPO_DIR }}
+        when: "equinix_metadata.json.plan == 'm3.large.x86'"
+      - name: Setup working directory and swap for machine type c3.medium.x86
+        ansible.builtin.shell: |
+          # c3.medium.x86 has 64GB of RAM which is not enough for most of assisted jobs
+          # we need to mount extra swap space in order over commit memory with libvirt/KVM
+          # the machine has 2x240G disks (one is used for the system) and 2x480GB disks
+
+          # Get disk where / is mounted
+          ROOT_DISK=$(lsblk -o pkname --noheadings --path | grep -E "^\S+" | sort | uniq)
+
+          # Setup the smallest disk available (240GB) as swap
+          SWAP_DISK=$(lsblk -o name --noheadings --sort size --path | grep -v "${ROOT_DISK}" | head -n1)
+          mkswap "${SWAP_DISK}"
+          swapon "${SWAP_DISK}"
+
+          # Setup the largest disk available (480GB) for assisted tests
+          REPO_DISK=$(lsblk -o name --noheadings --sort size --path | grep -v "${ROOT_DISK}" | tail -n1)
+          mkfs.xfs -f "${REPO_DISK}"
+          mount "${REPO_DISK}" "{{ REPO_DIR }}"
+        when: "equinix_metadata.json.plan == 'c3.medium.x86'"
+      when: '"packet" in CLUSTER_TYPE'
+    - name: Create {{ MINIKUBE_HOME }} directory if it does not exist
+      ansible.builtin.file:
+        path: "{{ MINIKUBE_HOME }}"
+        state: directory
     - name: Build config.sh file
       template:
         src: ./config.sh.j2
@@ -243,19 +284,20 @@ cat > run_test_playbook.yaml <<-EOF
     - name: Print config file content
       debug:
         msg: "{{ lookup('template', './config.sh.j2').split('\n') }}"
-    - name: Use nvme device if exists
-      ansible.builtin.shell: |
-        mkfs.xfs -f /dev/nvme0n1
-        mount /dev/nvme0n1 {{ REPO_DIR }}
-      when: nvme.stat.exists
-    - name: Extract test-infra repo archive
-      ansible.builtin.unarchive:
-        src: /root/assisted.tar.gz
-        dest: "{{ REPO_DIR }}"
-        remote_src: yes
-        owner: root
-        group: root
-        mode: 0755
+    - name: Retrieve assisted-test-infra sources
+      block:
+        - name: Pull {{ ASSISTED_TEST_INFRA_IMAGE }}
+          ansible.builtin.shell: |
+            podman pull "{{ ASSISTED_TEST_INFRA_IMAGE }}"
+        - name: Get working directory in {{ ASSISTED_TEST_INFRA_IMAGE }}
+          ansible.builtin.shell: |
+            podman inspect --format "{% raw %}{{ .Config.WorkingDir }}{% endraw %}" "{{ ASSISTED_TEST_INFRA_IMAGE }}"
+          register: assisted_test_infra_src_path
+        - name: Copy assisted-test-infra sources from {{ ASSISTED_TEST_INFRA_IMAGE }}:{{ assisted_test_infra_src_path.stdout }} to {{ REPO_DIR }}
+          ansible.builtin.shell: |
+            podman create --name src "{{ ASSISTED_TEST_INFRA_IMAGE }}"
+            podman cp "src:{{ assisted_test_infra_src_path.stdout }}/." "{{ REPO_DIR }}"
+            podman rm -f src
     - name: Create post install script
       ansible.builtin.copy:
         dest: /root/assisted-post-install.sh
@@ -264,4 +306,4 @@ cat > run_test_playbook.yaml <<-EOF
           echo "Finish running post installation script"
 EOF
 
-ansible-playbook run_test_playbook.yaml -i ${SHARED_DIR}/inventory
+ansible-playbook run_test_playbook.yaml -i "${SHARED_DIR}/inventory"

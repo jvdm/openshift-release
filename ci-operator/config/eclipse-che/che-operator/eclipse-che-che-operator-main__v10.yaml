@@ -30,57 +30,42 @@ tests:
   steps:
     cluster_profile: aws
     env:
-      OO_CHANNEL: next
-      OO_INSTALL_NAMESPACE: eclipse-che
-      OO_PACKAGE: eclipse-che-preview-openshift
-      OO_TARGET_NAMESPACES: '!all'
+      TEST_SKIPS: ""
     test:
     - as: operator-test
       cli: latest
-      commands: |
-        echo -e "[INFO] Test script content:"
-        cat .ci/oci-single-host.sh
-
-        /bin/bash .ci/oci-single-host.sh
+      commands: /bin/bash build/scripts/oc-tests/oc-test-operator.sh
       dependencies:
       - env: CI_CHE_OPERATOR_IMAGE
         name: che-operator-image
       env:
-      - name: OO_CHANNEL
-      - name: OO_INSTALL_NAMESPACE
-      - name: OO_PACKAGE
-      - name: OO_TARGET_NAMESPACES
+      - name: TEST_SKIPS
       from: src
       resources:
         requests:
           cpu: 100m
           memory: 200Mi
-    workflow: optional-operators-ci-aws
+    workflow: openshift-e2e-aws
 - as: upgrade-stable-to-next
   steps:
     cluster_profile: aws
+    env:
+      TEST_SKIPS: ""
     test:
     - as: upgrade-stable-to-next
       cli: latest
-      commands: |
-        echo -e "[INFO] Test script content:"
-        export GITHUB_TOKEN=$(cat /usr/local/ci-secrets/test-harness-secrets/github-token)
-        cat .ci/oci-nightly-update.sh
-
-        /bin/bash .ci/oci-nightly-update.sh
-      credentials:
-      - mount_path: /usr/local/ci-secrets/test-harness-secrets
-        name: test-harness-secrets
-        namespace: test-credentials
+      commands: /bin/bash build/scripts/oc-tests/oc-test-upgrade-from-stable-to-next.sh
       dependencies:
       - env: CI_CHE_OPERATOR_IMAGE
         name: che-operator-image
+      env:
+      - name: TEST_SKIPS
       from: src
       resources:
         requests:
           cpu: 100m
           memory: 200Mi
-    workflow: ipi-aws
+    workflow: openshift-e2e-aws
 zz_generated_metadata:
   branch: main
   org: eclipse-che

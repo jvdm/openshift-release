@@ -153,6 +153,7 @@ trap 'echo "$(date +%s)" > "${SHARED_DIR}/TEST_TIME_TEST_END"' EXIT
 oc version --client
 oc wait nodes --all --for=condition=Ready=true --timeout=10m
 oc wait clusteroperators --all --for=condition=Progressing=false --timeout=10m
+oc get clusterversion version -o yaml || true
 
 # execute the cases
 function run {
@@ -239,8 +240,10 @@ function run {
     # it ensure the the step after this step in test will be executed per https://docs.ci.openshift.org/docs/architecture/step-registry/#workflow
     # please refer to the junit result for case result, not depends on step result.
     if [ "W${FORCE_SUCCESS_EXIT}W" == "WnoW" ]; then
+        echo "force success exit"
         exit 1
     fi
+    echo "normal exit"
     exit 0
 }
 

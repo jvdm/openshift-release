@@ -186,6 +186,15 @@ tests:
     env:
       FAIL_ON_CORE_DUMP: "true"
     workflow: openshift-e2e-gcp-ovn
+- as: e2e-gcp-mount-ns-hiding
+  interval: 24h
+  steps:
+    cluster_profile: gcp-openshift-gce-devel-ci-2
+    env:
+      FAIL_ON_CORE_DUMP: "true"
+      MOUNT_NS_HIDING_ENABLED: "true"
+      MOUNT_NS_HIDING_LOG: "2"
+    workflow: openshift-e2e-gcp-mount-ns-hiding
 - as: e2e-gcp-sdn-serial
   interval: 24h
   steps:
@@ -267,7 +276,7 @@ tests:
     cluster_profile: aws-2
     env:
       BASE_DOMAIN: aws-2.ci.openshift.org
-    workflow: openshift-e2e-aws-cgroupsv2
+    workflow: openshift-e2e-aws-sdn-cgroupsv2
 - as: e2e-aws-sdn-crun
   interval: 3h
   steps:

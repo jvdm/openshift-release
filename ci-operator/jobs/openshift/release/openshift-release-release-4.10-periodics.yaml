@@ -38,8 +38,9 @@ periodics:
         # prow doesn't allow init containers or a second container
         export PATH=$PATH:/tmp/bin
         mkdir /tmp/bin
-        curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
+        curl -L --fail -v https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
         chmod ug+x /tmp/bin/oc
+        sha256sum /tmp/bin/oc
 
         # if the source and destination are identical, do nothing
         export KUBECONFIG=/etc/app.ci/kubeconfig
@@ -185,8 +186,9 @@ periodics:
         # prow doesn't allow init containers or a second container
         export PATH=$PATH:/tmp/bin
         mkdir /tmp/bin
-        curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
+        curl -L --fail -v https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
         chmod ug+x /tmp/bin/oc
+        sha256sum /tmp/bin/oc
 
         # if the source and destination are identical, do nothing
         from=$( oc get istag -n "${TAG_NS}" "${TAG_SOURCE}" -o template='{{ .image.metadata.name }}' )
@@ -249,8 +251,9 @@ periodics:
         # prow doesn't allow init containers or a second container
         export PATH=$PATH:/tmp/bin
         mkdir /tmp/bin
-        curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
+        curl -L --fail -v https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
         chmod ug+x /tmp/bin/oc
+        sha256sum /tmp/bin/oc
 
         # if the source and destination are identical, do nothing
         from=$( oc get istag -n "${TAG_NS}" "${TAG_SOURCE}" -o template='{{ .image.metadata.name }}' )
@@ -395,7 +398,7 @@ periodics:
       secret:
         secretName: ci-pull-credentials
 - agent: kubernetes
-  cluster: build02
+  cluster: build04
   decorate: true
   interval: 48h
   labels:
@@ -497,7 +500,7 @@ periodics:
       secret:
         secretName: ci-pull-credentials
 - agent: kubernetes
-  cluster: build02
+  cluster: build01
   decorate: true
   interval: 48h
   labels:
@@ -610,7 +613,7 @@ periodics:
       secret:
         secretName: ci-pull-credentials
 - agent: kubernetes
-  cluster: build02
+  cluster: build04
   decorate: true
   interval: 48h
   labels:
@@ -834,7 +837,7 @@ periodics:
       secret:
         secretName: ci-pull-credentials
 - agent: kubernetes
-  cluster: build02
+  cluster: build01
   decorate: true
   interval: 24h
   labels:
@@ -934,7 +937,7 @@ periodics:
       secret:
         secretName: ci-pull-credentials
 - agent: kubernetes
-  cluster: build02
+  cluster: build01
   decorate: true
   interval: 48h
   labels:
@@ -1034,7 +1037,7 @@ periodics:
       secret:
         secretName: ci-pull-credentials
 - agent: kubernetes
-  cluster: build02
+  cluster: build01
   decorate: true
   decoration_config:
     timeout: 8h0m0s
@@ -1172,7 +1175,7 @@ periodics:
       secret:
         secretName: ci-pull-credentials
 - agent: kubernetes
-  cluster: build02
+  cluster: build01
   decorate: true
   interval: 48h
   labels:
@@ -1274,7 +1277,7 @@ periodics:
       secret:
         secretName: ci-pull-credentials
 - agent: kubernetes
-  cluster: build02
+  cluster: build01
   decorate: true
   interval: 24h
   labels:

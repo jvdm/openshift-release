@@ -1,3 +1,12 @@
+base_images:
+  checkov-image:
+    name: checkov
+    namespace: ci
+    tag: "2"
+  hadolint-image:
+    name: hadolint
+    namespace: ci
+    tag: latest
 build_root:
   image_stream_tag:
     name: release
@@ -6,6 +15,7 @@ build_root:
 images:
 - dockerfile_literal: |-
     FROM src
+    RUN pip3 install --upgrade setuptools pip && pip3 install yamllint && yamllint --version
     RUN curl --location -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.4.7/argocd-linux-amd64 && \
         chmod +x /usr/local/bin/argocd && \
         argocd version --client && \
@@ -14,13 +24,12 @@ images:
         mv shellcheck-v$SHELLCHECK_VERSION/shellcheck /usr/local/bin/shellcheck && \
         chmod 755 /usr/local/bin/shellcheck && \
         shellcheck -V && \
-        yum install -y yamllint && \
-        curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
+        KUBECTL_VERSION=1.24.3 && \
+        curl -LO https://storage.googleapis.com/kubernetes-release/release/v$KUBECTL_VERSION/bin/linux/amd64/kubectl && \
         chmod +x ./kubectl && mv ./kubectl /usr/local/bin && \
         kubectl version --client=true && \
         wget https://github.com/mikefarah/yq/releases/download/v4.25.1/yq_linux_amd64 -O /usr/local/bin/yq && \
-        chmod +x /usr/local/bin/yq && yq --version && \
-        yum clean all && rm -rf /var/cache/yum/*
+        chmod +x /usr/local/bin/yq && yq --version
   from: src
   to: plnsvc-test-image
 releases:
@@ -51,14 +60,12 @@ tests:
       cli: latest
       commands: |
         HOME_DIR="$(pwd)"
-
         echo "Start building kcp plugin ..."
         kcp_version="$(yq '.images[] | select(.name == "kcp") | .newTag' "ckcp/openshift/overlays/dev/kustomization.yaml")"
         echo "kcp version:" $kcp_version
         git clone https://github.com/kcp-dev/kcp.git -b $kcp_version
         cd $HOME_DIR/kcp && go mod vendor && make install
         kubectl-kcp --version
-
         echo "\n\nStart ckcp setup ..."
         cd $HOME_DIR/ckcp && ./openshift_dev_setup.sh -d
       from: plnsvc-test-image
@@ -72,7 +79,7 @@ tests:
     - as: run-shellcheck
       cli: latest
       commands: |
-        find . -name "*.sh" -exec  shellcheck --severity=warning  {} +
+        find . -name "*.sh" -exec shellcheck {} +
       from: plnsvc-test-image
       resources:
         requests:
@@ -83,17 +90,23 @@ tests:
     - as: run-yamllint
       cli: latest
       commands: |
-        cat <<EOF > .yamllint.yml
-        extends: default
-        rules:
-          line-length: disable
-        EOF
-
-        yamllint --no-warnings .
+        yamllint -c test/config/yamllint.yaml .
       from: plnsvc-test-image
       resources:
         requests:
           cpu: 100m
+- as: plnsvc-hadolint
+  commands: |
+    find . -name Dockerfile -exec hadolint -c test/config/hadolint.yaml {} +
+  container:
+    clone: true
+    from: hadolint-image
+- as: plnsvc-checkov
+  commands: |
+    checkov --directory . --config-file test/config/checkov.yaml
+  container:
+    clone: true
+    from: checkov-image
 zz_generated_metadata:
   branch: main
   org: openshift-pipelines

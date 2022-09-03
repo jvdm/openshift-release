@@ -37,7 +37,7 @@ tests:
       IMAGE_REPO: search-collector
       REGISTRY_ORG: stolostron
     workflow: ocm-ci-image-mirror
-- as: e2e
+- as: test-on-kind-cluster
   steps:
     env:
       AWS_CREDENTIALS_SECRET: ocm-obs-usa-aws-kind
@@ -81,7 +81,6 @@ tests:
     test:
     - as: publish
       commands: |-
-        export OSCI_IMAGE_REMOTE_REPO_SRC="registry.ci.openshift.org/stolostron"
         export SELF="make -f Makefile.prow"
         export OSCI_PUBLISH_DELAY="0"
         make -f Makefile.prow osci/publish

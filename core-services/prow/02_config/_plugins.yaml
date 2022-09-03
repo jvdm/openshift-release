@@ -553,7 +553,7 @@ config_updater:
         app.ci:
         - ci
       gzip: true
-      name: ci-operator-misc-configs
+      name: ci-operator-1.x-configs
     ci-operator/config/**/*release-3.*.yaml:
       clusters:
         app.ci:
@@ -657,12 +657,6 @@ config_updater:
       gzip: true
       name: ci-operator-misc-configs
     ci-operator/config/**/assisted-*/*cloud_hotfix_releases*.yaml:
-      clusters:
-        app.ci:
-        - ci
-      gzip: true
-      name: ci-operator-misc-configs
-    ci-operator/config/**/assisted-*/*testing-image-changes*.yaml:
       clusters:
         app.ci:
         - ci
@@ -853,6 +847,12 @@ config_updater:
         app.ci:
         - ci
       gzip: true
+      name: ci-operator-2.x-configs
+    ci-operator/config/maistra/**/*maistra-*.yaml:
+      clusters:
+        app.ci:
+        - ci
+      gzip: true
       name: ci-operator-misc-configs
     ci-operator/config/openshift-priv/kubernetes/openshift-priv-kubernetes-{oc,origin,sdn}-*.yaml:
       clusters:
@@ -909,6 +909,18 @@ config_updater:
       gzip: true
       name: ci-operator-misc-configs
     ci-operator/config/redhat-developer/odo/*-v2.yaml:
+      clusters:
+        app.ci:
+        - ci
+      gzip: true
+      name: ci-operator-misc-configs
+    ci-operator/config/redhat-openshift-ecosystem/certified-operators-preprod/*-certified-operators-preprod-ocp-*.yaml:
+      clusters:
+        app.ci:
+        - ci
+      gzip: true
+      name: ci-operator-misc-configs
+    ci-operator/config/redhat-openshift-ecosystem/certified-operators-prod/*-certified-operators-prod-ocp-*.yaml:
       clusters:
         app.ci:
         - ci
@@ -974,6 +986,12 @@ config_updater:
         - ci
       gzip: true
       name: ci-operator-misc-configs
+    ci-operator/config/stackrox/**/*-hacks.yaml:
+      clusters:
+        app.ci:
+        - ci
+      gzip: true
+      name: ci-operator-misc-configs
     ci-operator/config/stackrox/**/*-night*.yaml:
       clusters:
         app.ci:
@@ -1015,49 +1033,49 @@ config_updater:
         app.ci:
         - ci
       gzip: true
-      name: ci-operator-misc-configs
+      name: ci-operator-2.x-configs
     ci-operator/config/stolostron/**/*-release-2.1*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: ci-operator-misc-configs
+      name: ci-operator-2.x-configs
     ci-operator/config/stolostron/**/*-release-2.2*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: ci-operator-misc-configs
+      name: ci-operator-2.x-configs
     ci-operator/config/stolostron/**/*-release-2.3*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: ci-operator-misc-configs
+      name: ci-operator-2.x-configs
     ci-operator/config/stolostron/**/*-release-2.4*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: ci-operator-misc-configs
+      name: ci-operator-2.x-configs
     ci-operator/config/stolostron/**/*-release-2.5*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: ci-operator-misc-configs
+      name: ci-operator-2.x-configs
     ci-operator/config/stolostron/**/*-release-2.6*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: ci-operator-misc-configs
+      name: ci-operator-2.x-configs
     ci-operator/config/stolostron/**/*-release-2.7*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: ci-operator-misc-configs
+      name: ci-operator-2.x-configs
     ci-operator/config/stolostron/**/*-release-9.9*.yaml:
       clusters:
         app.ci:
@@ -1309,7 +1327,7 @@ config_updater:
         app.ci:
         - ci
       gzip: true
-      name: job-config-misc
+      name: job-config-1.x
     ci-operator/jobs/**/*release-3.*.yaml:
       clusters:
         app.ci:
@@ -1413,12 +1431,6 @@ config_updater:
       gzip: true
       name: job-config-misc
     ci-operator/jobs/**/assisted-*/*cloud_hotfix_releases*.yaml:
-      clusters:
-        app.ci:
-        - ci
-      gzip: true
-      name: job-config-misc
-    ci-operator/jobs/**/assisted-*/*testing-image-changes*.yaml:
       clusters:
         app.ci:
         - ci
@@ -1616,6 +1628,12 @@ config_updater:
         - ci
       gzip: true
       name: job-config-misc
+    ci-operator/jobs/maistra/**/*{maistra,main}*.yaml:
+      clusters:
+        app.ci:
+        - ci
+      gzip: true
+      name: job-config-misc
     ci-operator/jobs/openshift-priv/kubernetes/openshift-priv-kubernetes-{oc,origin,sdn}-*.yaml:
       clusters:
         app.ci:
@@ -1671,6 +1689,18 @@ config_updater:
       gzip: true
       name: job-config-misc
     ci-operator/jobs/redhat-developer/odo/*-v2*.yaml:
+      clusters:
+        app.ci:
+        - ci
+      gzip: true
+      name: job-config-misc
+    ci-operator/jobs/redhat-openshift-ecosystem/certified-operators-preprod/*-certified-operators-preprod-ocp-*.yaml:
+      clusters:
+        app.ci:
+        - ci
+      gzip: true
+      name: job-config-misc
+    ci-operator/jobs/redhat-openshift-ecosystem/certified-operators-prod/*-certified-operators-prod-ocp-*.yaml:
       clusters:
         app.ci:
         - ci
@@ -1736,6 +1766,12 @@ config_updater:
         - ci
       gzip: true
       name: job-config-misc
+    ci-operator/jobs/stackrox/**/*-hacks-*.yaml:
+      clusters:
+        app.ci:
+        - ci
+      gzip: true
+      name: job-config-misc
     ci-operator/jobs/stackrox/**/*-night*.yaml:
       clusters:
         app.ci:
@@ -1777,49 +1813,49 @@ config_updater:
         app.ci:
         - ci
       gzip: true
-      name: job-config-misc
+      name: job-config-2.x
     ci-operator/jobs/stolostron/**/*-release-2.1*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: job-config-misc
+      name: job-config-2.x
     ci-operator/jobs/stolostron/**/*-release-2.2*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: job-config-misc
+      name: job-config-2.x
     ci-operator/jobs/stolostron/**/*-release-2.3*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: job-config-misc
+      name: job-config-2.x
     ci-operator/jobs/stolostron/**/*-release-2.4*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: job-config-misc
+      name: job-config-2.x
     ci-operator/jobs/stolostron/**/*-release-2.5*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: job-config-misc
+      name: job-config-2.x
     ci-operator/jobs/stolostron/**/*-release-2.6*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: job-config-misc
+      name: job-config-2.x
     ci-operator/jobs/stolostron/**/*-release-2.7*.yaml:
       clusters:
         app.ci:
         - ci
       gzip: true
-      name: job-config-misc
+      name: job-config-2.x
     ci-operator/jobs/stolostron/**/*-release-9.9*.yaml:
       clusters:
         app.ci:
@@ -2073,6 +2109,7 @@ help:
   help_guidelines_url: https://git.k8s.io/community/contributors/guide/help-wanted.md
 jira:
   disabled_jira_projects:
+  - ocpbugs
   - enterprise
   - patch
 label:
@@ -2095,10 +2132,24 @@ label:
     '*':
     - allowed_teams:
       - openshift-patch-managers
+      - openshift-staff-engineers
       label: cherry-pick-approved
     - allowed_teams:
       - openshift-patch-managers
+      - openshift-staff-engineers
       label: backport-risk-assessed
+    - allowed_teams:
+      - openshift-patch-managers
+      - openshift-staff-engineers
+      label: staff-eng-approved
+    - allowed_teams:
+      - openshift-patch-managers
+      - openshift-staff-engineers
+      label: jira/valid-bug
+    - allowed_teams:
+      - openshift-patch-managers
+      - openshift-staff-engineers
+      label: bugzilla/valid-bug
     - allowed_teams:
       - openshift-release-oversight
       label: approved

@@ -1,13 +1,15 @@
 #!/bin/bash
 
 set -o nounset
-set -o errexit
-set -o pipefail
+set +o errexit
+set +o pipefail
 
 function populate_artifact_dir() {
-  set +e
-  echo "Copying log bundle..."
-  cp "${dir}"/log-bundle-*.tar.gz "${ARTIFACT_DIR}/" 2>/dev/null
+  # https://bash.cyberciti.biz/bash-reference-manual/Programmable-Completion-Builtins.html
+  if compgen -G "${dir}/log-bundle-*.tar.gz" > /dev/null; then
+    echo "Copying log bundle..."
+    cp "${dir}"/log-bundle-*.tar.gz "${ARTIFACT_DIR}/" 2>/dev/null
+  fi
   echo "Removing REDACTED info from log..."
   sed '
     s/password: .*/password: REDACTED/;
@@ -32,7 +34,6 @@ function populate_artifact_dir() {
 }
 
 function prepare_next_steps() {
-  set +e
   #Save exit code for must-gather to generate junit
   echo "$?" > "${SHARED_DIR}/install-status.txt"
   echo "Setup phase finished, prepare env for next steps"
@@ -44,21 +45,21 @@ function prepare_next_steps() {
       "${dir}/auth/kubeconfig" \
       "${dir}/auth/kubeadmin-password" \
       "${dir}/metadata.json"
-
+  echo "Finished prepare_next_steps"
 }
 
 function log_to_file() {
-	local LOG_FILE=$1
+  local LOG_FILE=$1
 
-	/bin/rm -f ${LOG_FILE}
-	# Close STDOUT file descriptor
-	exec 1<&-
-	# Close STDERR FD
-	exec 2<&-
-	# Open STDOUT as $LOG_FILE file for read and write.
-	exec 1<>${LOG_FILE}
-	# Redirect STDERR to STDOUT
-	exec 2>&1
+  /bin/rm -f ${LOG_FILE}
+  # Close STDOUT file descriptor
+  exec 1<&-
+  # Close STDERR FD
+  exec 2<&-
+  # Open STDOUT as $LOG_FILE file for read and write.
+  exec 1<>${LOG_FILE}
+  # Redirect STDERR to STDOUT
+  exec 2>&1
 }
 
 function inject_promtail_service() {
@@ -210,10 +211,8 @@ EOF
 }
 
 function init_ibmcloud() {
-  set +e
-
   #install the tools required
-  cd /tmp
+  cd /tmp || exit 1
 
   if [ ! -f /tmp/IBM_CLOUD_CLI_amd64.tar.gz ]; then
     curl --output /tmp/IBM_CLOUD_CLI_amd64.tar.gz https://download.clis.cloud.ibm.com/ibm-cloud-cli/2.9.0/IBM_Cloud_CLI_2.9.0_amd64.tar.gz
@@ -223,14 +222,38 @@ function init_ibmcloud() {
       /tmp/Bluemix_CLI/bin/ibmcloud plugin install ${I}
     done
 
+    hash file 2>/dev/null && file /tmp/Bluemix_CLI/bin/ibmcloud
+    echo "Checking ibmcloud version..."
+    if ! /tmp/Bluemix_CLI/bin/ibmcloud --version; then
+      echo "Error: /tmp/Bluemix_CLI/bin/ibmcloud is not working?"
+      exit 1
+    fi
+
     #PATH=${PATH}:/tmp/Bluemix_CLI/bin:/tmp/Bluemix_CLI/bin/ibmcloud
     PATH=${PATH}:/tmp/Bluemix_CLI/bin
   fi
 
   if [ ! -f /tmp/jq ]; then
-    curl -L --output /tmp/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 && chmod +x /tmp/jq
 
-    /tmp/jq --version
+    for I in $(seq 1 5)
+    do
+      curl -L --output /tmp/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 && chmod +x /tmp/jq
+
+      hash file 2>/dev/null && file /tmp/jq
+      echo "Checking jq version..."
+      if /tmp/jq --version; then
+        break
+      else
+        echo "Error: /tmp/jq is not working?"
+        /bin/rm /tmp/jq
+        sleep 30s
+      fi
+    done
+
+    if [ ! -f /tmp/jq ]; then
+      echo "Error: Could not successfully download jq!"
+      exit 1
+    fi
 
     #PATH=${PATH}:/tmp/:/tmp/jq
     PATH=${PATH}:/tmp
@@ -261,13 +284,9 @@ function init_ibmcloud() {
 
   CLOUD_INSTANCE_ID="$(echo ${SERVICE_INSTANCE_CRN} | cut -d: -f8)"
   export CLOUD_INSTANCE_ID
-
-  set -e
 }
 
 function check_resources() {
-  set +e
-
   #This function checks for any remaining DHCP leases/leftover/uncleaned resources and cleans them up before installing a new cluster
   echo "Check resource phase initiated"
 
@@ -310,9 +329,6 @@ function check_resources() {
 }
 
 function destroy_resources() {
-
-  set +e
-
   #
   # TODO: Remove after infra bugs are fixed
   # TO confirm resources are cleared properly
@@ -375,14 +391,9 @@ EOF
       break
     fi
   done
-
-  set -e
 }
 
 function dump_resources() {
-
-  set +e
-
   init_ibmcloud
 
   INFRA_ID=$(jq -r '.infraID' ${dir}/metadata.json)
@@ -410,6 +421,42 @@ function dump_resources() {
   else
     ibmcloud dl gateway ${DL_UUID}
   fi
+
+# "8<--------8<--------8<--------8<-------- Load Balancers 8<--------8<--------8<--------8<--------"
+
+(
+  LB_INT_FILE=$(mktemp)
+  LB_MCS_POOL_FILE=$(mktemp)
+  trap '/bin/rm "${LB_INT_FILE}" "${LB_MCS_POOL_FILE}"' EXIT
+
+  ibmcloud is load-balancers --output json | jq -r '.[] | select (.name|test("'${INFRA_ID}'-loadbalancer-int"))' > ${LB_INT_FILE}
+  LB_INT_ID=$(jq -r .id ${LB_INT_FILE})
+  if [ -z "${LB_INT_ID}" ]
+  then
+    echo "Error: LB_INT_ID is empty"
+    exit
+  fi
+
+  echo "8<--------8<--------8<--------8<-------- Internal Load Balancer 8<--------8<--------8<--------8<--------"
+  ibmcloud is load-balancer ${LB_INT_ID}
+
+  LB_MCS_ID=$(jq -r '.pools[] | select (.name|test("machine-config-server")) | .id' ${LB_INT_FILE})
+  if [ -z "${LB_MCS_ID}" ]
+  then
+    echo "Error: LB_MCS_ID is empty"
+    exit
+  fi
+
+  echo "8<--------8<--------8<--------8<-------- LB Machine Config Server 8<--------8<--------8<--------8<--------"
+  ibmcloud is load-balancer-pool ${LB_INT_ID} ${LB_MCS_ID}
+
+  echo "8<--------8<--------8<--------8<-------- LB MCS Pool 8<--------8<--------8<--------8<--------"
+  ibmcloud is load-balancer-pool ${LB_INT_ID} ${LB_MCS_ID} --output json > ${LB_MCS_POOL_FILE}
+  while read UUID
+  do
+    ibmcloud is load-balancer-pool-member ${LB_INT_ID} ${LB_MCS_ID} ${UUID}
+  done < <(jq -r '.members[].id' ${LB_MCS_POOL_FILE})
+)
 
   echo "8<--------8<--------8<--------8<-------- VPC 8<--------8<--------8<--------8<--------"
 
@@ -448,14 +495,60 @@ function dump_resources() {
 
   done < <( echo "${DHCP_NETWORKS_RESULT}" | jq -r '.[] | .id' )
 
+  echo "8<--------8<--------8<--------8<-------- oc get clusterversion 8<--------8<--------8<--------8<--------"
+
+  (
+    DEBUG=true
+
+    CV_FILE=$(mktemp)
+    F_FILE=$(mktemp)
+    trap '/bin/rm "${CV_FILE}" "${F_FILE}"' EXIT
+
+    export KUBECONFIG=${dir}/auth/kubeconfig
+
+    oc --request-timeout=5s get clusterversion -o json > ${CV_FILE} 2>/dev/null
+    RC=$?
+    echo "oc --request-timeout=5s get clusterversion -o json"
+    echo "RC=${RC}"
+    if ${DEBUG}
+    then
+      oc --request-timeout=5s get clusterversion 2>/dev/null > ${ARTIFACT_DIR}/get-clusterversion.output
+    fi
+    if [ ${RC} -gt 0 ]
+    then
+      exit 1
+    fi
+    if ${DEBUG}
+    then
+      echo "===== BEGIN: oc get clusterversion: CV_FILE =====" >> ${ARTIFACT_DIR}/get-clusterversion.output
+      cat ${CV_FILE} >> ${ARTIFACT_DIR}/get-clusterversion.output
+      echo "===== END: oc get clusterversion: CV_FILE =====" >> ${ARTIFACT_DIR}/get-clusterversion.output
+    fi
+    jq -r '.items[].status.conditions[] | select (.status|test("False"))' ${CV_FILE} > ${F_FILE}
+    RC=$?
+    echo "jq -r '.items[].status.conditions[] | ..."
+    echo "RC=${RC}"
+    if ${DEBUG}
+    then
+      echo "===== BEGIN: oc get clusterversion: F_FILE =====" >> ${ARTIFACT_DIR}/get-clusterversion.output
+      cat ${F_FILE} >> ${ARTIFACT_DIR}/get-clusterversion.output
+      echo "===== END: oc get clusterversion: F_FILE =====" >> ${ARTIFACT_DIR}/get-clusterversion.output
+    fi
+    if [ ${RC} -gt 0 ]
+    then
+      exit 1
+    fi
+    echo "Select ALL, where \"status\": \"False\" returns:"
+    cat ${F_FILE}
+    echo
+    echo "Select \"type\": \"Available\", where \"status\": \"False\" returns:"
+    jq -r 'select (.type|test("Available"))' ${F_FILE}
+)
+
   echo "8<--------8<--------8<--------8<-------- DONE! 8<--------8<--------8<--------8<--------"
 
   egrep '(Creation complete|level=error|: [0-9ms]*")' ${dir}/.openshift_install.log > ${SHARED_DIR}/installation_stats.log
-
-  set -e
 }
-
-set -euo pipefail
 
 trap 'CHILDREN=$(jobs -p); if test -n "${CHILDREN}"; then kill ${CHILDREN} && wait; fi' TERM
 trap 'prepare_next_steps' EXIT TERM
@@ -524,6 +617,8 @@ date "+%s" > "${SHARED_DIR}/TEST_TIME_INSTALL_START"
 echo "POWERVS_REGION=${POWERVS_REGION}"
 echo "POWERVS_ZONE=${POWERVS_ZONE}"
 echo
+
+openshift-install version
 
 # Add ignition configs
 echo "DATE=$(date --utc '+%Y-%m-%dT%H:%M:%S%:z')"
@@ -639,4 +734,5 @@ if test "${ret}" -eq 0 ; then
   echo "https://$(env KUBECONFIG=${dir}/auth/kubeconfig oc -n openshift-console get routes console -o=jsonpath='{.spec.host}')" > "${SHARED_DIR}/console.url"
 fi
 
-exit "$ret"
+echo "Exiting with ret=${ret}"
+exit "${ret}"

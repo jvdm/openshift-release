@@ -16,7 +16,7 @@ images:
       - registry.ci.openshift.org/stolostron/builder:go1.18-linux
   to: observatorium-operator
 promotion:
-  name: "2.6"
+  name: "2.7"
   namespace: stolostron
 releases:
   initial:
@@ -61,11 +61,30 @@ tests:
           cpu: 100m
           memory: 200Mi
     workflow: ocm-e2e-kind
+- as: sonar-pre-submit
+  commands: |
+    export SELF="make -f /opt/build-harness/Makefile.prow"
+    make -f /opt/build-harness/Makefile.prow sonar/go/prow
+  container:
+    from: src
+  secrets:
+  - mount_path: /etc/sonarcloud/
+    name: acm-sonarcloud-token
+- as: sonar-post-submit
+  commands: |
+    export SELF="make -f /opt/build-harness/Makefile.prow"
+    make -f /opt/build-harness/Makefile.prow sonar/go/prow
+  container:
+    from: src
+  postsubmit: true
+  secrets:
+  - mount_path: /etc/sonarcloud/
+    name: acm-sonarcloud-token
 - as: fast-forward
   postsubmit: true
   steps:
     env:
-      DESTINATION_BRANCH: release-2.6
+      DESTINATION_BRANCH: release-2.7
     workflow: ocm-ci-fastforward
 zz_generated_metadata:
   branch: main

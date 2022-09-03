@@ -29,7 +29,7 @@ periodics:
         # prow doesn't allow init containers or a second container
         export PATH=$PATH:/tmp/bin
         mkdir /tmp/bin
-        curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
+        curl -L --fail https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
         chmod ug+x /tmp/bin/oc
 
         # if the source and destination are identical, do nothing
@@ -176,7 +176,7 @@ periodics:
         # prow doesn't allow init containers or a second container
         export PATH=$PATH:/tmp/bin
         mkdir /tmp/bin
-        curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
+        curl -L --fail https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
         chmod ug+x /tmp/bin/oc
 
         # if the source and destination are identical, do nothing
@@ -297,7 +297,7 @@ periodics:
         # prow doesn't allow init containers or a second container
         export PATH=$PATH:/tmp/bin
         mkdir /tmp/bin
-        curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
+        curl -L --fail https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
         chmod ug+x /tmp/bin/oc
 
         # if the source and destination are identical, do nothing
@@ -438,7 +438,7 @@ periodics:
         mkdir $HOME/.docker/
         cp /usr/local/pull-secret/.dockerconfigjson $HOME/.docker/config.json
         mkdir $HOME/bin
-        curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
+        curl -L --fail https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz | tar xvzf - -C /tmp/bin/ oc
         curl -L https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 2>/dev/null >/tmp/bin/jq
         chmod ug+x $HOME/bin/oc $HOME/bin/jq
 
@@ -668,7 +668,7 @@ periodics:
         secretName: ci-pull-credentials
 - agent: kubernetes
   cluster: build05
-  cron: 0 9 */14 * *
+  cron: 25 23 14 */12 *
   decorate: true
   labels:
     job-release: "4.4"
@@ -767,9 +767,9 @@ periodics:
       secret:
         secretName: ci-pull-credentials
 - agent: kubernetes
-  cluster: build05
+  cluster: build02
+  cron: 9 13 8 */12 *
   decorate: true
-  interval: 24h
   labels:
     job-release: "4.4"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
@@ -870,8 +870,8 @@ periodics:
         secretName: ci-pull-credentials
 - agent: kubernetes
   cluster: build05
+  cron: 28 20 4 */12 *
   decorate: true
-  interval: 24h
   labels:
     job-env: aws
     job-release: "4.4"
@@ -983,8 +983,8 @@ periodics:
         secretName: ci-pull-credentials
 - agent: kubernetes
   cluster: build05
+  cron: 55 11 8 */12 *
   decorate: true
-  interval: 24h
   labels:
     job-env: aws
     job-release: "4.4"
@@ -1095,9 +1095,9 @@ periodics:
       secret:
         secretName: ci-pull-credentials
 - agent: kubernetes
-  cluster: build05
+  cluster: build02
+  cron: 21 21 25 */12 *
   decorate: true
-  interval: 24h
   labels:
     job-release: "4.4"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
@@ -1209,8 +1209,8 @@ periodics:
         secretName: ci-pull-credentials
 - agent: kubernetes
   cluster: build05
+  cron: 38 15 19 */12 *
   decorate: true
-  interval: 24h
   labels:
     job-release: "4.4"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
@@ -1319,9 +1319,9 @@ periodics:
       secret:
         secretName: ci-pull-credentials
 - agent: kubernetes
-  cluster: build05
+  cluster: build02
+  cron: 34 21 21 */12 *
   decorate: true
-  interval: 24h
   labels:
     job-release: "4.4"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
@@ -1420,8 +1420,8 @@ periodics:
         secretName: ci-pull-credentials
 - agent: kubernetes
   cluster: build05
+  cron: 5 16 6 */12 *
   decorate: true
-  interval: 24h
   labels:
     job-release: "4.4"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
@@ -1518,8 +1518,8 @@ periodics:
         secretName: ci-pull-credentials
 - agent: kubernetes
   cluster: build05
+  cron: 49 13 15 */12 *
   decorate: true
-  interval: 24h
   labels:
     job-env: aws
     job-release: "4.4"
@@ -1617,9 +1617,9 @@ periodics:
       secret:
         secretName: ci-pull-credentials
 - agent: kubernetes
-  cluster: build05
+  cluster: build02
+  cron: 43 8 17 */12 *
   decorate: true
-  interval: 24h
   labels:
     job-env: gcp
     job-release: "4.4"
@@ -1730,8 +1730,8 @@ periodics:
         secretName: ci-pull-credentials
 - agent: kubernetes
   cluster: build05
+  cron: 25 12 2 */12 *
   decorate: true
-  interval: 24h
   labels:
     job-release: "4.4"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
@@ -1830,8 +1830,8 @@ periodics:
         secretName: ci-pull-credentials
 - agent: kubernetes
   cluster: build05
+  cron: 24 21 24 */12 *
   decorate: true
-  interval: 24h
   labels:
     job-env: aws
     job-release: "4.4"
@@ -1966,8 +1966,8 @@ periodics:
         secretName: ci-pull-credentials
 - agent: kubernetes
   cluster: build05
+  cron: 21 21 16 */12 *
   decorate: true
-  interval: 24h
   labels:
     job-env: aws
     job-release: "4.4"
@@ -2066,13 +2066,13 @@ periodics:
         secretName: ci-pull-credentials
 - agent: kubernetes
   cluster: build05
+  cron: 32 2 7 */12 *
   decorate: true
   extra_refs:
   - base_ref: release-4.4
     org: openshift
     repo: openshift-ansible
     workdir: true
-  interval: 6h
   labels:
     job-release: "4.4"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"

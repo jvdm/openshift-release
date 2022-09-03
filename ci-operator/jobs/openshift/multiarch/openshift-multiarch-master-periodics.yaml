@@ -1,6 +1,7 @@
 periodics:
 - agent: kubernetes
   cluster: build03
+  cron: 23 11  * * 6
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -8,7 +9,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -76,6 +76,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 26 9  * * 6
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -83,7 +84,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 72h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -151,6 +151,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 56 13  * * 6
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -158,7 +159,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 72h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -226,6 +226,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 51 0  * * 6
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -233,7 +234,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -301,6 +301,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 18 0  * * 6
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -308,7 +309,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -604,7 +604,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 7,19 * * *
+  cron: 0 6 * * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -680,6 +680,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 27 7  * * 6
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -687,7 +688,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 72h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -755,7 +755,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 23 * * 0
+  cron: 5 6 19 * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -831,7 +831,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 5 6 19 * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -907,6 +907,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 5 0 17 * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -914,7 +915,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 72h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -982,7 +982,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 18 * * 5
+  cron: 5 1 7 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -1058,7 +1058,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 5 1 7 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -1134,6 +1134,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 22 8  * * 0
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -1141,7 +1142,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -1209,6 +1209,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 5 0 12 * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -1216,7 +1217,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 72h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -1284,7 +1284,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 3 * * 5
+  cron: 5 2 9 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -1360,7 +1360,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 5 2 9 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -1512,7 +1512,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 10 * * *
+  cron: 0 12 * * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -1588,6 +1588,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 58 16 */1 * 1-5
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -1595,7 +1596,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -1887,7 +1887,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: build03
+  cluster: build05
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -1895,7 +1895,7 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 48h
+  interval: 72h
   labels:
     ci-operator.openshift.io/cloud: aws
     ci-operator.openshift.io/cloud-cluster-profile: aws-2
@@ -1963,6 +1963,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 12 17 */1 * 1-5
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -1970,7 +1971,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -2038,6 +2038,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 42 0 */1 * 1-5
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -2045,7 +2046,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -2340,7 +2340,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 0,6,12,18 * * *
+  cron: 0 0,12 * * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -2416,7 +2416,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 8,20 * * *
+  cron: 0 8 * * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -2492,7 +2492,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 0,18 * * *
+  cron: 0 0 * * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -2642,7 +2642,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: build03
+  cluster: build05
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -2650,7 +2650,7 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 48h
+  interval: 72h
   labels:
     ci-operator.openshift.io/cloud: aws
     ci-operator.openshift.io/cloud-cluster-profile: aws-2
@@ -2718,7 +2718,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 19 * * 0
+  cron: 7 8 22 * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -2794,7 +2794,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 7 8 22 * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -3020,7 +3020,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 17 * * *
+  cron: 4 21 18 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -3096,7 +3096,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 4 21 18 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -3172,6 +3172,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 19 17 */1 * 1-5
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -3179,7 +3180,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -3322,7 +3322,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 2 * * *
+  cron: 5 11 20 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -3398,7 +3398,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 5 11 20 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -3474,6 +3474,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 35 8 */1 * 1-5
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -3481,7 +3482,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -3549,7 +3549,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 21 * * *
+  cron: 0 21 * * 1-5
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -3625,7 +3625,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 21 * * *
+  cron: 0 21 * * 1-5
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -3701,6 +3701,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build03
+  cron: 46 5 */1 * 1-5
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -3708,7 +3709,6 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -3783,382 +3783,7 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
-  labels:
-    ci-operator.openshift.io/cloud: aws-arm64
-    ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
-    ci-operator.openshift.io/variant: nightly-4.12
-    ci.openshift.io/generator: prowgen
-    job-release: "4.12"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-aws-arm64
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-aws-arm64-cluster-profile
-      - --target=ocp-e2e-aws-arm64
-      - --variant=nightly-4.12
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-e2e-aws-arm64-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-aws-arm64
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build03
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
   interval: 72h
-  labels:
-    ci-operator.openshift.io/cloud: aws-arm64
-    ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
-    ci-operator.openshift.io/variant: nightly-4.12
-    ci.openshift.io/generator: prowgen
-    job-release: "4.12"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-aws-arm64-single-node
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-aws-arm64-single-node-cluster-profile
-      - --target=ocp-e2e-aws-arm64-single-node
-      - --variant=nightly-4.12
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-e2e-aws-arm64-single-node-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-aws-arm64
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build03
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  interval: 72h
-  labels:
-    ci-operator.openshift.io/cloud: aws-arm64
-    ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
-    ci-operator.openshift.io/variant: nightly-4.12
-    ci.openshift.io/generator: prowgen
-    job-release: "4.12"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-aws-arm64-techpreview
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-aws-arm64-techpreview-cluster-profile
-      - --target=ocp-e2e-aws-arm64-techpreview
-      - --variant=nightly-4.12
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-e2e-aws-arm64-techpreview-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-aws-arm64
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build03
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  interval: 72h
-  labels:
-    ci-operator.openshift.io/cloud: aws-arm64
-    ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
-    ci-operator.openshift.io/variant: nightly-4.12
-    ci.openshift.io/generator: prowgen
-    job-release: "4.12"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-aws-arm64-techpreview-serial
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-aws-arm64-techpreview-serial-cluster-profile
-      - --target=ocp-e2e-aws-arm64-techpreview-serial
-      - --variant=nightly-4.12
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-e2e-aws-arm64-techpreview-serial-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-aws-arm64
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build03
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  interval: 48h
-  labels:
-    ci-operator.openshift.io/cloud: aws
-    ci-operator.openshift.io/cloud-cluster-profile: aws-2
-    ci-operator.openshift.io/variant: nightly-4.12
-    ci.openshift.io/generator: prowgen
-    job-release: "4.12"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-aws-heterogeneous
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-aws-heterogeneous-cluster-profile
-      - --target=ocp-e2e-aws-heterogeneous
-      - --variant=nightly-4.12
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-e2e-aws-heterogeneous-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-aws-2
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build03
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  interval: 24h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -4233,7 +3858,7 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
+  interval: 72h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -4241,7 +3866,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-aws-upi-arm64
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-aws-ovn-arm64-single-node
   spec:
     containers:
     - args:
@@ -4250,8 +3875,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-aws-upi-arm64-cluster-profile
-      - --target=ocp-e2e-aws-upi-arm64
+      - --secret-dir=/usr/local/ocp-e2e-aws-ovn-arm64-single-node-cluster-profile
+      - --target=ocp-e2e-aws-ovn-arm64-single-node
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -4268,7 +3893,382 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-e2e-aws-upi-arm64-cluster-profile
+      - mountPath: /usr/local/ocp-e2e-aws-ovn-arm64-single-node-cluster-profile
+        name: cluster-profile
+      - mountPath: /secrets/gcs
+        name: gcs-credentials
+        readOnly: true
+      - mountPath: /etc/pull-secret
+        name: pull-secret
+        readOnly: true
+      - mountPath: /etc/report
+        name: result-aggregator
+        readOnly: true
+    serviceAccountName: ci-operator
+    volumes:
+    - name: boskos
+      secret:
+        items:
+        - key: credentials
+          path: credentials
+        secretName: boskos-credentials
+    - name: ci-pull-credentials
+      secret:
+        secretName: ci-pull-credentials
+    - name: cluster-profile
+      secret:
+        secretName: cluster-secrets-aws-arm64
+    - name: pull-secret
+      secret:
+        secretName: registry-pull-credentials
+    - name: result-aggregator
+      secret:
+        secretName: result-aggregator
+- agent: kubernetes
+  cluster: build03
+  decorate: true
+  decoration_config:
+    skip_cloning: true
+  extra_refs:
+  - base_ref: master
+    org: openshift
+    repo: multiarch
+  interval: 72h
+  labels:
+    ci-operator.openshift.io/cloud: aws-arm64
+    ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
+    ci-operator.openshift.io/variant: nightly-4.12
+    ci.openshift.io/generator: prowgen
+    job-release: "4.12"
+    pj-rehearse.openshift.io/can-be-rehearsed: "true"
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-aws-ovn-arm64-techpreview
+  spec:
+    containers:
+    - args:
+      - --gcs-upload-secret=/secrets/gcs/service-account.json
+      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
+      - --lease-server-credentials-file=/etc/boskos/credentials
+      - --report-credentials-file=/etc/report/credentials
+      - --secret-dir=/secrets/ci-pull-credentials
+      - --secret-dir=/usr/local/ocp-e2e-aws-ovn-arm64-techpreview-cluster-profile
+      - --target=ocp-e2e-aws-ovn-arm64-techpreview
+      - --variant=nightly-4.12
+      command:
+      - ci-operator
+      image: ci-operator:latest
+      imagePullPolicy: Always
+      name: ""
+      resources:
+        requests:
+          cpu: 10m
+      volumeMounts:
+      - mountPath: /etc/boskos
+        name: boskos
+        readOnly: true
+      - mountPath: /secrets/ci-pull-credentials
+        name: ci-pull-credentials
+        readOnly: true
+      - mountPath: /usr/local/ocp-e2e-aws-ovn-arm64-techpreview-cluster-profile
+        name: cluster-profile
+      - mountPath: /secrets/gcs
+        name: gcs-credentials
+        readOnly: true
+      - mountPath: /etc/pull-secret
+        name: pull-secret
+        readOnly: true
+      - mountPath: /etc/report
+        name: result-aggregator
+        readOnly: true
+    serviceAccountName: ci-operator
+    volumes:
+    - name: boskos
+      secret:
+        items:
+        - key: credentials
+          path: credentials
+        secretName: boskos-credentials
+    - name: ci-pull-credentials
+      secret:
+        secretName: ci-pull-credentials
+    - name: cluster-profile
+      secret:
+        secretName: cluster-secrets-aws-arm64
+    - name: pull-secret
+      secret:
+        secretName: registry-pull-credentials
+    - name: result-aggregator
+      secret:
+        secretName: result-aggregator
+- agent: kubernetes
+  cluster: build03
+  decorate: true
+  decoration_config:
+    skip_cloning: true
+  extra_refs:
+  - base_ref: master
+    org: openshift
+    repo: multiarch
+  interval: 72h
+  labels:
+    ci-operator.openshift.io/cloud: aws-arm64
+    ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
+    ci-operator.openshift.io/variant: nightly-4.12
+    ci.openshift.io/generator: prowgen
+    job-release: "4.12"
+    pj-rehearse.openshift.io/can-be-rehearsed: "true"
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-aws-ovn-arm64-techpreview-serial
+  spec:
+    containers:
+    - args:
+      - --gcs-upload-secret=/secrets/gcs/service-account.json
+      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
+      - --lease-server-credentials-file=/etc/boskos/credentials
+      - --report-credentials-file=/etc/report/credentials
+      - --secret-dir=/secrets/ci-pull-credentials
+      - --secret-dir=/usr/local/ocp-e2e-aws-ovn-arm64-techpreview-serial-cluster-profile
+      - --target=ocp-e2e-aws-ovn-arm64-techpreview-serial
+      - --variant=nightly-4.12
+      command:
+      - ci-operator
+      image: ci-operator:latest
+      imagePullPolicy: Always
+      name: ""
+      resources:
+        requests:
+          cpu: 10m
+      volumeMounts:
+      - mountPath: /etc/boskos
+        name: boskos
+        readOnly: true
+      - mountPath: /secrets/ci-pull-credentials
+        name: ci-pull-credentials
+        readOnly: true
+      - mountPath: /usr/local/ocp-e2e-aws-ovn-arm64-techpreview-serial-cluster-profile
+        name: cluster-profile
+      - mountPath: /secrets/gcs
+        name: gcs-credentials
+        readOnly: true
+      - mountPath: /etc/pull-secret
+        name: pull-secret
+        readOnly: true
+      - mountPath: /etc/report
+        name: result-aggregator
+        readOnly: true
+    serviceAccountName: ci-operator
+    volumes:
+    - name: boskos
+      secret:
+        items:
+        - key: credentials
+          path: credentials
+        secretName: boskos-credentials
+    - name: ci-pull-credentials
+      secret:
+        secretName: ci-pull-credentials
+    - name: cluster-profile
+      secret:
+        secretName: cluster-secrets-aws-arm64
+    - name: pull-secret
+      secret:
+        secretName: registry-pull-credentials
+    - name: result-aggregator
+      secret:
+        secretName: result-aggregator
+- agent: kubernetes
+  cluster: build05
+  decorate: true
+  decoration_config:
+    skip_cloning: true
+  extra_refs:
+  - base_ref: master
+    org: openshift
+    repo: multiarch
+  interval: 72h
+  labels:
+    ci-operator.openshift.io/cloud: aws
+    ci-operator.openshift.io/cloud-cluster-profile: aws-2
+    ci-operator.openshift.io/variant: nightly-4.12
+    ci.openshift.io/generator: prowgen
+    job-release: "4.12"
+    pj-rehearse.openshift.io/can-be-rehearsed: "true"
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-aws-ovn-heterogeneous
+  spec:
+    containers:
+    - args:
+      - --gcs-upload-secret=/secrets/gcs/service-account.json
+      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
+      - --lease-server-credentials-file=/etc/boskos/credentials
+      - --report-credentials-file=/etc/report/credentials
+      - --secret-dir=/secrets/ci-pull-credentials
+      - --secret-dir=/usr/local/ocp-e2e-aws-ovn-heterogeneous-cluster-profile
+      - --target=ocp-e2e-aws-ovn-heterogeneous
+      - --variant=nightly-4.12
+      command:
+      - ci-operator
+      image: ci-operator:latest
+      imagePullPolicy: Always
+      name: ""
+      resources:
+        requests:
+          cpu: 10m
+      volumeMounts:
+      - mountPath: /etc/boskos
+        name: boskos
+        readOnly: true
+      - mountPath: /secrets/ci-pull-credentials
+        name: ci-pull-credentials
+        readOnly: true
+      - mountPath: /usr/local/ocp-e2e-aws-ovn-heterogeneous-cluster-profile
+        name: cluster-profile
+      - mountPath: /secrets/gcs
+        name: gcs-credentials
+        readOnly: true
+      - mountPath: /etc/pull-secret
+        name: pull-secret
+        readOnly: true
+      - mountPath: /etc/report
+        name: result-aggregator
+        readOnly: true
+    serviceAccountName: ci-operator
+    volumes:
+    - name: boskos
+      secret:
+        items:
+        - key: credentials
+          path: credentials
+        secretName: boskos-credentials
+    - name: ci-pull-credentials
+      secret:
+        secretName: ci-pull-credentials
+    - name: cluster-profile
+      secret:
+        secretName: cluster-secrets-aws-2
+    - name: pull-secret
+      secret:
+        secretName: registry-pull-credentials
+    - name: result-aggregator
+      secret:
+        secretName: result-aggregator
+- agent: kubernetes
+  cluster: build03
+  decorate: true
+  decoration_config:
+    skip_cloning: true
+  extra_refs:
+  - base_ref: master
+    org: openshift
+    repo: multiarch
+  interval: 72h
+  labels:
+    ci-operator.openshift.io/cloud: aws-arm64
+    ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
+    ci-operator.openshift.io/variant: nightly-4.12
+    ci.openshift.io/generator: prowgen
+    job-release: "4.12"
+    pj-rehearse.openshift.io/can-be-rehearsed: "true"
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-aws-sdn-arm64
+  spec:
+    containers:
+    - args:
+      - --gcs-upload-secret=/secrets/gcs/service-account.json
+      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
+      - --lease-server-credentials-file=/etc/boskos/credentials
+      - --report-credentials-file=/etc/report/credentials
+      - --secret-dir=/secrets/ci-pull-credentials
+      - --secret-dir=/usr/local/ocp-e2e-aws-sdn-arm64-cluster-profile
+      - --target=ocp-e2e-aws-sdn-arm64
+      - --variant=nightly-4.12
+      command:
+      - ci-operator
+      image: ci-operator:latest
+      imagePullPolicy: Always
+      name: ""
+      resources:
+        requests:
+          cpu: 10m
+      volumeMounts:
+      - mountPath: /etc/boskos
+        name: boskos
+        readOnly: true
+      - mountPath: /secrets/ci-pull-credentials
+        name: ci-pull-credentials
+        readOnly: true
+      - mountPath: /usr/local/ocp-e2e-aws-sdn-arm64-cluster-profile
+        name: cluster-profile
+      - mountPath: /secrets/gcs
+        name: gcs-credentials
+        readOnly: true
+      - mountPath: /etc/pull-secret
+        name: pull-secret
+        readOnly: true
+      - mountPath: /etc/report
+        name: result-aggregator
+        readOnly: true
+    serviceAccountName: ci-operator
+    volumes:
+    - name: boskos
+      secret:
+        items:
+        - key: credentials
+          path: credentials
+        secretName: boskos-credentials
+    - name: ci-pull-credentials
+      secret:
+        secretName: ci-pull-credentials
+    - name: cluster-profile
+      secret:
+        secretName: cluster-secrets-aws-arm64
+    - name: pull-secret
+      secret:
+        secretName: registry-pull-credentials
+    - name: result-aggregator
+      secret:
+        secretName: result-aggregator
+- agent: kubernetes
+  cluster: build03
+  decorate: true
+  decoration_config:
+    skip_cloning: true
+  extra_refs:
+  - base_ref: master
+    org: openshift
+    repo: multiarch
+  interval: 72h
+  labels:
+    ci-operator.openshift.io/cloud: aws-arm64
+    ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
+    ci-operator.openshift.io/variant: nightly-4.12
+    ci.openshift.io/generator: prowgen
+    job-release: "4.12"
+    pj-rehearse.openshift.io/can-be-rehearsed: "true"
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-aws-upi-ovn-arm64
+  spec:
+    containers:
+    - args:
+      - --gcs-upload-secret=/secrets/gcs/service-account.json
+      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
+      - --lease-server-credentials-file=/etc/boskos/credentials
+      - --report-credentials-file=/etc/report/credentials
+      - --secret-dir=/secrets/ci-pull-credentials
+      - --secret-dir=/usr/local/ocp-e2e-aws-upi-ovn-arm64-cluster-profile
+      - --target=ocp-e2e-aws-upi-ovn-arm64
+      - --variant=nightly-4.12
+      command:
+      - ci-operator
+      image: ci-operator:latest
+      imagePullPolicy: Always
+      name: ""
+      resources:
+        requests:
+          cpu: 10m
+      volumeMounts:
+      - mountPath: /etc/boskos
+        name: boskos
+        readOnly: true
+      - mountPath: /secrets/ci-pull-credentials
+        name: ci-pull-credentials
+        readOnly: true
+      - mountPath: /usr/local/ocp-e2e-aws-upi-ovn-arm64-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -4317,7 +4317,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-compact-remote-libvirt-ppc64le
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-compact-sdn-remote-libvirt-ppc64le
   spec:
     containers:
     - args:
@@ -4326,8 +4326,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-compact-remote-libvirt-ppc64le-cluster-profile
-      - --target=ocp-e2e-compact-remote-libvirt-ppc64le
+      - --secret-dir=/usr/local/ocp-e2e-compact-sdn-remote-libvirt-ppc64le-cluster-profile
+      - --target=ocp-e2e-compact-sdn-remote-libvirt-ppc64le
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -4344,7 +4344,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-e2e-compact-remote-libvirt-ppc64le-cluster-profile
+      - mountPath: /usr/local/ocp-e2e-compact-sdn-remote-libvirt-ppc64le-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -4393,7 +4393,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-compact-remote-libvirt-s390x
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-compact-sdn-remote-libvirt-s390x
   spec:
     containers:
     - args:
@@ -4402,8 +4402,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-compact-remote-libvirt-s390x-cluster-profile
-      - --target=ocp-e2e-compact-remote-libvirt-s390x
+      - --secret-dir=/usr/local/ocp-e2e-compact-sdn-remote-libvirt-s390x-cluster-profile
+      - --target=ocp-e2e-compact-sdn-remote-libvirt-s390x
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -4420,7 +4420,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-e2e-compact-remote-libvirt-s390x-cluster-profile
+      - mountPath: /usr/local/ocp-e2e-compact-sdn-remote-libvirt-s390x-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -4528,7 +4528,6 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 1,13 * * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -4536,6 +4535,7 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
+  interval: 96h
   labels:
     ci-operator.openshift.io/cloud: libvirt-ppc64le
     ci-operator.openshift.io/cloud-cluster-profile: libvirt-ppc64le
@@ -4544,7 +4544,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-remote-libvirt-ppc64le
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-sdn-remote-libvirt-ppc64le
   spec:
     containers:
     - args:
@@ -4553,8 +4553,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-remote-libvirt-ppc64le-cluster-profile
-      - --target=ocp-e2e-remote-libvirt-ppc64le
+      - --secret-dir=/usr/local/ocp-e2e-sdn-remote-libvirt-ppc64le-cluster-profile
+      - --target=ocp-e2e-sdn-remote-libvirt-ppc64le
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -4571,7 +4571,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-e2e-remote-libvirt-ppc64le-cluster-profile
+      - mountPath: /usr/local/ocp-e2e-sdn-remote-libvirt-ppc64le-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -4604,7 +4604,6 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 3,20 * * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -4612,6 +4611,7 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
+  interval: 96h
   labels:
     ci-operator.openshift.io/cloud: libvirt-s390x
     ci-operator.openshift.io/cloud-cluster-profile: libvirt-s390x
@@ -4620,7 +4620,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-remote-libvirt-s390x
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-sdn-remote-libvirt-s390x
   spec:
     containers:
     - args:
@@ -4629,8 +4629,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-remote-libvirt-s390x-cluster-profile
-      - --target=ocp-e2e-remote-libvirt-s390x
+      - --secret-dir=/usr/local/ocp-e2e-sdn-remote-libvirt-s390x-cluster-profile
+      - --target=ocp-e2e-sdn-remote-libvirt-s390x
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -4647,7 +4647,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-e2e-remote-libvirt-s390x-cluster-profile
+      - mountPath: /usr/local/ocp-e2e-sdn-remote-libvirt-s390x-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -4695,7 +4695,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-serial-aws-arm64
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-sdn-serial-aws-arm64
   spec:
     containers:
     - args:
@@ -4704,8 +4704,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-serial-aws-arm64-cluster-profile
-      - --target=ocp-e2e-serial-aws-arm64
+      - --secret-dir=/usr/local/ocp-e2e-sdn-serial-aws-arm64-cluster-profile
+      - --target=ocp-e2e-sdn-serial-aws-arm64
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -4722,7 +4722,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-e2e-serial-aws-arm64-cluster-profile
+      - mountPath: /usr/local/ocp-e2e-sdn-serial-aws-arm64-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -4754,7 +4754,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: build03
+  cluster: build05
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -4762,7 +4762,7 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 48h
+  interval: 72h
   labels:
     ci-operator.openshift.io/cloud: aws
     ci-operator.openshift.io/cloud-cluster-profile: aws-2
@@ -4770,7 +4770,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-serial-aws-heterogeneous
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-serial-aws-ovn-heterogeneous
   spec:
     containers:
     - args:
@@ -4779,8 +4779,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-serial-aws-heterogeneous-cluster-profile
-      - --target=ocp-e2e-serial-aws-heterogeneous
+      - --secret-dir=/usr/local/ocp-e2e-serial-aws-ovn-heterogeneous-cluster-profile
+      - --target=ocp-e2e-serial-aws-ovn-heterogeneous
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -4797,7 +4797,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-e2e-serial-aws-heterogeneous-cluster-profile
+      - mountPath: /usr/local/ocp-e2e-serial-aws-ovn-heterogeneous-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -4830,7 +4830,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 11 * * 0
+  cron: 43 4 26 * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -4846,7 +4846,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-serial-remote-libvirt-ppc64le
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-serial-sdn-remote-libvirt-ppc64le
   spec:
     containers:
     - args:
@@ -4855,8 +4855,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-serial-remote-libvirt-ppc64le-cluster-profile
-      - --target=ocp-e2e-serial-remote-libvirt-ppc64le
+      - --secret-dir=/usr/local/ocp-e2e-serial-sdn-remote-libvirt-ppc64le-cluster-profile
+      - --target=ocp-e2e-serial-sdn-remote-libvirt-ppc64le
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -4873,7 +4873,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-e2e-serial-remote-libvirt-ppc64le-cluster-profile
+      - mountPath: /usr/local/ocp-e2e-serial-sdn-remote-libvirt-ppc64le-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -4906,7 +4906,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 43 4 26 * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -4922,7 +4922,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-serial-remote-libvirt-s390x
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-serial-sdn-remote-libvirt-s390x
   spec:
     containers:
     - args:
@@ -4931,8 +4931,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-serial-remote-libvirt-s390x-cluster-profile
-      - --target=ocp-e2e-serial-remote-libvirt-s390x
+      - --secret-dir=/usr/local/ocp-e2e-serial-sdn-remote-libvirt-s390x-cluster-profile
+      - --target=ocp-e2e-serial-sdn-remote-libvirt-s390x
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -4949,7 +4949,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-e2e-serial-remote-libvirt-s390x-cluster-profile
+      - mountPath: /usr/local/ocp-e2e-serial-sdn-remote-libvirt-s390x-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -4997,7 +4997,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-upgrade-aws-arm64
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-e2e-upgrade-aws-ovn-arm64
   spec:
     containers:
     - args:
@@ -5006,8 +5006,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-upgrade-aws-arm64-cluster-profile
-      - --target=ocp-e2e-upgrade-aws-arm64
+      - --secret-dir=/usr/local/ocp-e2e-upgrade-aws-ovn-arm64-cluster-profile
+      - --target=ocp-e2e-upgrade-aws-ovn-arm64
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -5024,7 +5024,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-e2e-upgrade-aws-arm64-cluster-profile
+      - mountPath: /usr/local/ocp-e2e-upgrade-aws-ovn-arm64-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -5064,7 +5064,7 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 72h
+  interval: 96h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -5072,7 +5072,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-image-ecosystem-aws-arm64
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-image-ecosystem-aws-ovn-arm64
   spec:
     containers:
     - args:
@@ -5081,8 +5081,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-image-ecosystem-aws-arm64-cluster-profile
-      - --target=ocp-image-ecosystem-aws-arm64
+      - --secret-dir=/usr/local/ocp-image-ecosystem-aws-ovn-arm64-cluster-profile
+      - --target=ocp-image-ecosystem-aws-ovn-arm64
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -5099,7 +5099,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-image-ecosystem-aws-arm64-cluster-profile
+      - mountPath: /usr/local/ocp-image-ecosystem-aws-ovn-arm64-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -5132,7 +5132,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 15 * * *
+  cron: 15 15 29 * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -5148,7 +5148,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-image-ecosystem-remote-libvirt-ppc64le
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-image-ecosystem-sdn-remote-libvirt-ppc64le
   spec:
     containers:
     - args:
@@ -5157,8 +5157,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-image-ecosystem-remote-libvirt-ppc64le-cluster-profile
-      - --target=ocp-image-ecosystem-remote-libvirt-ppc64le
+      - --secret-dir=/usr/local/ocp-image-ecosystem-sdn-remote-libvirt-ppc64le-cluster-profile
+      - --target=ocp-image-ecosystem-sdn-remote-libvirt-ppc64le
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -5175,7 +5175,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-image-ecosystem-remote-libvirt-ppc64le-cluster-profile
+      - mountPath: /usr/local/ocp-image-ecosystem-sdn-remote-libvirt-ppc64le-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -5208,7 +5208,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 15 15 29 * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -5224,7 +5224,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-image-ecosystem-remote-libvirt-s390x
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-image-ecosystem-sdn-remote-libvirt-s390x
   spec:
     containers:
     - args:
@@ -5233,8 +5233,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-image-ecosystem-remote-libvirt-s390x-cluster-profile
-      - --target=ocp-image-ecosystem-remote-libvirt-s390x
+      - --secret-dir=/usr/local/ocp-image-ecosystem-sdn-remote-libvirt-s390x-cluster-profile
+      - --target=ocp-image-ecosystem-sdn-remote-libvirt-s390x
       - --variant=nightly-4.12
       command:
       - ci-operator
@@ -5251,7 +5251,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-image-ecosystem-remote-libvirt-s390x-cluster-profile
+      - mountPath: /usr/local/ocp-image-ecosystem-sdn-remote-libvirt-s390x-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -5366,15 +5366,242 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
+  interval: 96h
+  labels:
+    ci-operator.openshift.io/cloud: aws-arm64
+    ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
+    ci-operator.openshift.io/variant: nightly-4.12
+    ci.openshift.io/generator: prowgen
+    job-release: "4.12"
+    pj-rehearse.openshift.io/can-be-rehearsed: "true"
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-jenkins-e2e-aws-ovn-arm64
+  spec:
+    containers:
+    - args:
+      - --gcs-upload-secret=/secrets/gcs/service-account.json
+      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
+      - --lease-server-credentials-file=/etc/boskos/credentials
+      - --report-credentials-file=/etc/report/credentials
+      - --secret-dir=/secrets/ci-pull-credentials
+      - --secret-dir=/usr/local/ocp-jenkins-e2e-aws-ovn-arm64-cluster-profile
+      - --target=ocp-jenkins-e2e-aws-ovn-arm64
+      - --variant=nightly-4.12
+      command:
+      - ci-operator
+      image: ci-operator:latest
+      imagePullPolicy: Always
+      name: ""
+      resources:
+        requests:
+          cpu: 10m
+      volumeMounts:
+      - mountPath: /etc/boskos
+        name: boskos
+        readOnly: true
+      - mountPath: /secrets/ci-pull-credentials
+        name: ci-pull-credentials
+        readOnly: true
+      - mountPath: /usr/local/ocp-jenkins-e2e-aws-ovn-arm64-cluster-profile
+        name: cluster-profile
+      - mountPath: /secrets/gcs
+        name: gcs-credentials
+        readOnly: true
+      - mountPath: /etc/pull-secret
+        name: pull-secret
+        readOnly: true
+      - mountPath: /etc/report
+        name: result-aggregator
+        readOnly: true
+    serviceAccountName: ci-operator
+    volumes:
+    - name: boskos
+      secret:
+        items:
+        - key: credentials
+          path: credentials
+        secretName: boskos-credentials
+    - name: ci-pull-credentials
+      secret:
+        secretName: ci-pull-credentials
+    - name: cluster-profile
+      secret:
+        secretName: cluster-secrets-aws-arm64
+    - name: pull-secret
+      secret:
+        secretName: registry-pull-credentials
+    - name: result-aggregator
+      secret:
+        secretName: result-aggregator
+- agent: kubernetes
+  cluster: build01
+  cron: 19 18 24 * *
+  decorate: true
+  decoration_config:
+    skip_cloning: true
+  extra_refs:
+  - base_ref: master
+    org: openshift
+    repo: multiarch
+  labels:
+    ci-operator.openshift.io/cloud: libvirt-ppc64le
+    ci-operator.openshift.io/cloud-cluster-profile: libvirt-ppc64le
+    ci-operator.openshift.io/cluster: build01
+    ci-operator.openshift.io/variant: nightly-4.12
+    ci.openshift.io/generator: prowgen
+    job-release: "4.12"
+    pj-rehearse.openshift.io/can-be-rehearsed: "true"
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-jenkins-e2e-sdn-remote-libvirt-ppc64le
+  spec:
+    containers:
+    - args:
+      - --gcs-upload-secret=/secrets/gcs/service-account.json
+      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
+      - --lease-server-credentials-file=/etc/boskos/credentials
+      - --report-credentials-file=/etc/report/credentials
+      - --secret-dir=/secrets/ci-pull-credentials
+      - --secret-dir=/usr/local/ocp-jenkins-e2e-sdn-remote-libvirt-ppc64le-cluster-profile
+      - --target=ocp-jenkins-e2e-sdn-remote-libvirt-ppc64le
+      - --variant=nightly-4.12
+      command:
+      - ci-operator
+      image: ci-operator:latest
+      imagePullPolicy: Always
+      name: ""
+      resources:
+        requests:
+          cpu: 10m
+      volumeMounts:
+      - mountPath: /etc/boskos
+        name: boskos
+        readOnly: true
+      - mountPath: /secrets/ci-pull-credentials
+        name: ci-pull-credentials
+        readOnly: true
+      - mountPath: /usr/local/ocp-jenkins-e2e-sdn-remote-libvirt-ppc64le-cluster-profile
+        name: cluster-profile
+      - mountPath: /secrets/gcs
+        name: gcs-credentials
+        readOnly: true
+      - mountPath: /etc/pull-secret
+        name: pull-secret
+        readOnly: true
+      - mountPath: /etc/report
+        name: result-aggregator
+        readOnly: true
+    serviceAccountName: ci-operator
+    volumes:
+    - name: boskos
+      secret:
+        items:
+        - key: credentials
+          path: credentials
+        secretName: boskos-credentials
+    - name: ci-pull-credentials
+      secret:
+        secretName: ci-pull-credentials
+    - name: cluster-profile
+      secret:
+        secretName: cluster-secrets-libvirt-ppc64le
+    - name: pull-secret
+      secret:
+        secretName: registry-pull-credentials
+    - name: result-aggregator
+      secret:
+        secretName: result-aggregator
+- agent: kubernetes
+  cluster: build01
+  cron: 19 18 24 * *
+  decorate: true
+  decoration_config:
+    skip_cloning: true
+  extra_refs:
+  - base_ref: master
+    org: openshift
+    repo: multiarch
+  labels:
+    ci-operator.openshift.io/cloud: libvirt-s390x
+    ci-operator.openshift.io/cloud-cluster-profile: libvirt-s390x
+    ci-operator.openshift.io/cluster: build01
+    ci-operator.openshift.io/variant: nightly-4.12
+    ci.openshift.io/generator: prowgen
+    job-release: "4.12"
+    pj-rehearse.openshift.io/can-be-rehearsed: "true"
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-jenkins-e2e-sdn-remote-libvirt-s390x
+  spec:
+    containers:
+    - args:
+      - --gcs-upload-secret=/secrets/gcs/service-account.json
+      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
+      - --lease-server-credentials-file=/etc/boskos/credentials
+      - --report-credentials-file=/etc/report/credentials
+      - --secret-dir=/secrets/ci-pull-credentials
+      - --secret-dir=/usr/local/ocp-jenkins-e2e-sdn-remote-libvirt-s390x-cluster-profile
+      - --target=ocp-jenkins-e2e-sdn-remote-libvirt-s390x
+      - --variant=nightly-4.12
+      command:
+      - ci-operator
+      image: ci-operator:latest
+      imagePullPolicy: Always
+      name: ""
+      resources:
+        requests:
+          cpu: 10m
+      volumeMounts:
+      - mountPath: /etc/boskos
+        name: boskos
+        readOnly: true
+      - mountPath: /secrets/ci-pull-credentials
+        name: ci-pull-credentials
+        readOnly: true
+      - mountPath: /usr/local/ocp-jenkins-e2e-sdn-remote-libvirt-s390x-cluster-profile
+        name: cluster-profile
+      - mountPath: /secrets/gcs
+        name: gcs-credentials
+        readOnly: true
+      - mountPath: /etc/pull-secret
+        name: pull-secret
+        readOnly: true
+      - mountPath: /etc/report
+        name: result-aggregator
+        readOnly: true
+    serviceAccountName: ci-operator
+    volumes:
+    - name: boskos
+      secret:
+        items:
+        - key: credentials
+          path: credentials
+        secretName: boskos-credentials
+    - name: ci-pull-credentials
+      secret:
+        secretName: ci-pull-credentials
+    - name: cluster-profile
+      secret:
+        secretName: cluster-secrets-libvirt-s390x
+    - name: pull-secret
+      secret:
+        secretName: registry-pull-credentials
+    - name: result-aggregator
+      secret:
+        secretName: result-aggregator
+- agent: kubernetes
+  cluster: build03
+  decorate: true
+  decoration_config:
+    skip_cloning: true
+  extra_refs:
+  - base_ref: master
+    org: openshift
+    repo: multiarch
   interval: 72h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
-    ci-operator.openshift.io/variant: nightly-4.12
+    ci-operator.openshift.io/variant: nightly-4.12-upgrade-from-nightly-4.11
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-jenkins-e2e-aws-arm64
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-upgrade-from-nightly-4.11-ocp-e2e-aws-sdn-arm64
   spec:
     containers:
     - args:
@@ -5383,9 +5610,9 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-jenkins-e2e-aws-arm64-cluster-profile
-      - --target=ocp-jenkins-e2e-aws-arm64
-      - --variant=nightly-4.12
+      - --secret-dir=/usr/local/ocp-e2e-aws-sdn-arm64-cluster-profile
+      - --target=ocp-e2e-aws-sdn-arm64
+      - --variant=nightly-4.12-upgrade-from-nightly-4.11
       command:
       - ci-operator
       image: ci-operator:latest
@@ -5401,7 +5628,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-jenkins-e2e-aws-arm64-cluster-profile
+      - mountPath: /usr/local/ocp-e2e-aws-sdn-arm64-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -5434,7 +5661,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 5 * * *
+  cron: 0 3 * * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -5446,11 +5673,11 @@ periodics:
     ci-operator.openshift.io/cloud: libvirt-ppc64le
     ci-operator.openshift.io/cloud-cluster-profile: libvirt-ppc64le
     ci-operator.openshift.io/cluster: build01
-    ci-operator.openshift.io/variant: nightly-4.12
+    ci-operator.openshift.io/variant: nightly-4.12-upgrade-from-nightly-4.11
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-jenkins-e2e-remote-libvirt-ppc64le
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-upgrade-from-nightly-4.11-ocp-sdn-remote-libvirt-ppc64le
   spec:
     containers:
     - args:
@@ -5459,9 +5686,9 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-jenkins-e2e-remote-libvirt-ppc64le-cluster-profile
-      - --target=ocp-jenkins-e2e-remote-libvirt-ppc64le
-      - --variant=nightly-4.12
+      - --secret-dir=/usr/local/ocp-sdn-remote-libvirt-ppc64le-cluster-profile
+      - --target=ocp-sdn-remote-libvirt-ppc64le
+      - --variant=nightly-4.12-upgrade-from-nightly-4.11
       command:
       - ci-operator
       image: ci-operator:latest
@@ -5477,7 +5704,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-jenkins-e2e-remote-libvirt-ppc64le-cluster-profile
+      - mountPath: /usr/local/ocp-sdn-remote-libvirt-ppc64le-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -5510,7 +5737,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 0 3 * * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -5522,11 +5749,11 @@ periodics:
     ci-operator.openshift.io/cloud: libvirt-s390x
     ci-operator.openshift.io/cloud-cluster-profile: libvirt-s390x
     ci-operator.openshift.io/cluster: build01
-    ci-operator.openshift.io/variant: nightly-4.12
+    ci-operator.openshift.io/variant: nightly-4.12-upgrade-from-nightly-4.11
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-ocp-jenkins-e2e-remote-libvirt-s390x
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-upgrade-from-nightly-4.11-ocp-sdn-remote-libvirt-s390x
   spec:
     containers:
     - args:
@@ -5535,9 +5762,9 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-jenkins-e2e-remote-libvirt-s390x-cluster-profile
-      - --target=ocp-jenkins-e2e-remote-libvirt-s390x
-      - --variant=nightly-4.12
+      - --secret-dir=/usr/local/ocp-sdn-remote-libvirt-s390x-cluster-profile
+      - --target=ocp-sdn-remote-libvirt-s390x
+      - --variant=nightly-4.12-upgrade-from-nightly-4.11
       command:
       - ci-operator
       image: ci-operator:latest
@@ -5553,7 +5780,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-jenkins-e2e-remote-libvirt-s390x-cluster-profile
+      - mountPath: /usr/local/ocp-sdn-remote-libvirt-s390x-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -5593,234 +5820,7 @@ periodics:
   - base_ref: master
     org: openshift
     repo: multiarch
-  interval: 24h
-  labels:
-    ci-operator.openshift.io/cloud: aws-arm64
-    ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
-    ci-operator.openshift.io/variant: nightly-4.12-upgrade-from-nightly-4.11
-    ci.openshift.io/generator: prowgen
-    job-release: "4.12"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-upgrade-from-nightly-4.11-ocp-e2e-aws-arm64
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-aws-arm64-cluster-profile
-      - --target=ocp-e2e-aws-arm64
-      - --variant=nightly-4.12-upgrade-from-nightly-4.11
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-e2e-aws-arm64-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-aws-arm64
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build01
-  cron: 0 9,21 * * *
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  labels:
-    ci-operator.openshift.io/cloud: libvirt-ppc64le
-    ci-operator.openshift.io/cloud-cluster-profile: libvirt-ppc64le
-    ci-operator.openshift.io/cluster: build01
-    ci-operator.openshift.io/variant: nightly-4.12-upgrade-from-nightly-4.11
-    ci.openshift.io/generator: prowgen
-    job-release: "4.12"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-upgrade-from-nightly-4.11-ocp-remote-libvirt-ppc64le
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-remote-libvirt-ppc64le-cluster-profile
-      - --target=ocp-remote-libvirt-ppc64le
-      - --variant=nightly-4.12-upgrade-from-nightly-4.11
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-remote-libvirt-ppc64le-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-libvirt-ppc64le
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build01
-  cron: 0 9 * * *
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  labels:
-    ci-operator.openshift.io/cloud: libvirt-s390x
-    ci-operator.openshift.io/cloud-cluster-profile: libvirt-s390x
-    ci-operator.openshift.io/cluster: build01
-    ci-operator.openshift.io/variant: nightly-4.12-upgrade-from-nightly-4.11
-    ci.openshift.io/generator: prowgen
-    job-release: "4.12"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-upgrade-from-nightly-4.11-ocp-remote-libvirt-s390x
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-remote-libvirt-s390x-cluster-profile
-      - --target=ocp-remote-libvirt-s390x
-      - --variant=nightly-4.12-upgrade-from-nightly-4.11
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-remote-libvirt-s390x-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-libvirt-s390x
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build03
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  interval: 24h
+  interval: 72h
   labels:
     ci-operator.openshift.io/cloud: aws-arm64
     ci-operator.openshift.io/cloud-cluster-profile: aws-arm64
@@ -5828,7 +5828,7 @@ periodics:
     ci.openshift.io/generator: prowgen
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.12-upgrade-from-stable-4.11-ocp-e2e-aws-arm64
+  name: periodic-ci-openshift-multiarch-master-nightly-4.12-upgrade-from-stable-4.11-ocp-e2e-aws-sdn-arm64
   spec:
     containers:
     - args:
@@ -5837,8 +5837,8 @@ periodics:
       - --lease-server-credentials-file=/etc/boskos/credentials
       - --report-credentials-file=/etc/report/credentials
       - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-aws-arm64-cluster-profile
-      - --target=ocp-e2e-aws-arm64
+      - --secret-dir=/usr/local/ocp-e2e-aws-sdn-arm64-cluster-profile
+      - --target=ocp-e2e-aws-sdn-arm64
       - --variant=nightly-4.12-upgrade-from-stable-4.11
       command:
       - ci-operator
@@ -5855,7 +5855,7 @@ periodics:
       - mountPath: /secrets/ci-pull-credentials
         name: ci-pull-credentials
         readOnly: true
-      - mountPath: /usr/local/ocp-e2e-aws-arm64-cluster-profile
+      - mountPath: /usr/local/ocp-e2e-aws-sdn-arm64-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -6344,462 +6344,6 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@weekly'
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  labels:
-    ci-operator.openshift.io/cloud: libvirt-ppc64le
-    ci-operator.openshift.io/cloud-cluster-profile: libvirt-ppc64le
-    ci-operator.openshift.io/cluster: build01
-    ci-operator.openshift.io/variant: nightly-4.7
-    ci.openshift.io/generator: prowgen
-    job-release: "4.7"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.7-ocp-e2e-remote-libvirt-ppc64le
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-remote-libvirt-ppc64le-cluster-profile
-      - --target=ocp-e2e-remote-libvirt-ppc64le
-      - --variant=nightly-4.7
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-e2e-remote-libvirt-ppc64le-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-libvirt-ppc64le
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build01
-  cron: '@weekly'
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  labels:
-    ci-operator.openshift.io/cloud: libvirt-s390x
-    ci-operator.openshift.io/cloud-cluster-profile: libvirt-s390x
-    ci-operator.openshift.io/cluster: build01
-    ci-operator.openshift.io/variant: nightly-4.7
-    ci.openshift.io/generator: prowgen
-    job-release: "4.7"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.7-ocp-e2e-remote-libvirt-s390x
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-e2e-remote-libvirt-s390x-cluster-profile
-      - --target=ocp-e2e-remote-libvirt-s390x
-      - --variant=nightly-4.7
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-e2e-remote-libvirt-s390x-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-libvirt-s390x
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build01
-  cron: '@yearly'
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  labels:
-    ci-operator.openshift.io/cloud: libvirt-ppc64le
-    ci-operator.openshift.io/cloud-cluster-profile: libvirt-ppc64le
-    ci-operator.openshift.io/cluster: build01
-    ci-operator.openshift.io/variant: nightly-4.7
-    ci.openshift.io/generator: prowgen
-    job-release: "4.7"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.7-ocp-image-ecosystem-remote-libvirt-ppc64le
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-image-ecosystem-remote-libvirt-ppc64le-cluster-profile
-      - --target=ocp-image-ecosystem-remote-libvirt-ppc64le
-      - --variant=nightly-4.7
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-image-ecosystem-remote-libvirt-ppc64le-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-libvirt-ppc64le
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build01
-  cron: '@yearly'
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  labels:
-    ci-operator.openshift.io/cloud: libvirt-s390x
-    ci-operator.openshift.io/cloud-cluster-profile: libvirt-s390x
-    ci-operator.openshift.io/cluster: build01
-    ci-operator.openshift.io/variant: nightly-4.7
-    ci.openshift.io/generator: prowgen
-    job-release: "4.7"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.7-ocp-image-ecosystem-remote-libvirt-s390x
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-image-ecosystem-remote-libvirt-s390x-cluster-profile
-      - --target=ocp-image-ecosystem-remote-libvirt-s390x
-      - --variant=nightly-4.7
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-image-ecosystem-remote-libvirt-s390x-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-libvirt-s390x
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build01
-  cron: '@yearly'
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  labels:
-    ci-operator.openshift.io/cloud: libvirt-ppc64le
-    ci-operator.openshift.io/cloud-cluster-profile: libvirt-ppc64le
-    ci-operator.openshift.io/cluster: build01
-    ci-operator.openshift.io/variant: nightly-4.7
-    ci.openshift.io/generator: prowgen
-    job-release: "4.7"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.7-ocp-jenkins-e2e-remote-libvirt-ppc64le
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-jenkins-e2e-remote-libvirt-ppc64le-cluster-profile
-      - --target=ocp-jenkins-e2e-remote-libvirt-ppc64le
-      - --variant=nightly-4.7
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-jenkins-e2e-remote-libvirt-ppc64le-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-libvirt-ppc64le
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build01
-  cron: '@yearly'
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  labels:
-    ci-operator.openshift.io/cloud: libvirt-s390x
-    ci-operator.openshift.io/cloud-cluster-profile: libvirt-s390x
-    ci-operator.openshift.io/cluster: build01
-    ci-operator.openshift.io/variant: nightly-4.7
-    ci.openshift.io/generator: prowgen
-    job-release: "4.7"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.7-ocp-jenkins-e2e-remote-libvirt-s390x
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-jenkins-e2e-remote-libvirt-s390x-cluster-profile
-      - --target=ocp-jenkins-e2e-remote-libvirt-s390x
-      - --variant=nightly-4.7
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-jenkins-e2e-remote-libvirt-s390x-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-libvirt-s390x
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build01
   cron: '@yearly'
   decorate: true
   decoration_config:
@@ -6952,7 +6496,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 43 13 */13 * *
+  cron: 12 9 3 * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -7028,7 +6572,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 45 19 */13 * *
+  cron: 12 9 3 * *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -7104,7 +6648,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 9 * * 6
+  cron: 33 22 11 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -7180,7 +6724,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 33 22 11 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -7256,7 +6800,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 1 2 3 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -7332,7 +6876,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 1 2 3 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -7408,7 +6952,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 30 20 10 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -7484,7 +7028,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 30 20 10 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -7528,158 +7072,6 @@ periodics:
         name: ci-pull-credentials
         readOnly: true
       - mountPath: /usr/local/ocp-jenkins-e2e-remote-libvirt-s390x-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-libvirt-s390x
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build01
-  cron: 11 20 */14 * *
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  labels:
-    ci-operator.openshift.io/cloud: libvirt-ppc64le
-    ci-operator.openshift.io/cloud-cluster-profile: libvirt-ppc64le
-    ci-operator.openshift.io/cluster: build01
-    ci-operator.openshift.io/variant: nightly-4.8-upgrade-from-nightly-4.7
-    ci.openshift.io/generator: prowgen
-    job-release: "4.8"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.8-upgrade-from-nightly-4.7-ocp-remote-libvirt-ppc64le
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-remote-libvirt-ppc64le-cluster-profile
-      - --target=ocp-remote-libvirt-ppc64le
-      - --variant=nightly-4.8-upgrade-from-nightly-4.7
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-remote-libvirt-ppc64le-cluster-profile
-        name: cluster-profile
-      - mountPath: /secrets/gcs
-        name: gcs-credentials
-        readOnly: true
-      - mountPath: /etc/pull-secret
-        name: pull-secret
-        readOnly: true
-      - mountPath: /etc/report
-        name: result-aggregator
-        readOnly: true
-    serviceAccountName: ci-operator
-    volumes:
-    - name: boskos
-      secret:
-        items:
-        - key: credentials
-          path: credentials
-        secretName: boskos-credentials
-    - name: ci-pull-credentials
-      secret:
-        secretName: ci-pull-credentials
-    - name: cluster-profile
-      secret:
-        secretName: cluster-secrets-libvirt-ppc64le
-    - name: pull-secret
-      secret:
-        secretName: registry-pull-credentials
-    - name: result-aggregator
-      secret:
-        secretName: result-aggregator
-- agent: kubernetes
-  cluster: build01
-  cron: 3 2 */13 * *
-  decorate: true
-  decoration_config:
-    skip_cloning: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: multiarch
-  labels:
-    ci-operator.openshift.io/cloud: libvirt-s390x
-    ci-operator.openshift.io/cloud-cluster-profile: libvirt-s390x
-    ci-operator.openshift.io/cluster: build01
-    ci-operator.openshift.io/variant: nightly-4.8-upgrade-from-nightly-4.7
-    ci.openshift.io/generator: prowgen
-    job-release: "4.8"
-    pj-rehearse.openshift.io/can-be-rehearsed: "true"
-  name: periodic-ci-openshift-multiarch-master-nightly-4.8-upgrade-from-nightly-4.7-ocp-remote-libvirt-s390x
-  spec:
-    containers:
-    - args:
-      - --gcs-upload-secret=/secrets/gcs/service-account.json
-      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
-      - --lease-server-credentials-file=/etc/boskos/credentials
-      - --report-credentials-file=/etc/report/credentials
-      - --secret-dir=/secrets/ci-pull-credentials
-      - --secret-dir=/usr/local/ocp-remote-libvirt-s390x-cluster-profile
-      - --target=ocp-remote-libvirt-s390x
-      - --variant=nightly-4.8-upgrade-from-nightly-4.7
-      command:
-      - ci-operator
-      image: ci-operator:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/boskos
-        name: boskos
-        readOnly: true
-      - mountPath: /secrets/ci-pull-credentials
-        name: ci-pull-credentials
-        readOnly: true
-      - mountPath: /usr/local/ocp-remote-libvirt-s390x-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -8091,7 +7483,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 16 * * 6
+  cron: 51 16 2 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -8167,7 +7559,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 51 16 2 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -8243,7 +7635,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 1 * * 4
+  cron: 33 11 8 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -8319,7 +7711,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 33 11 8 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -8470,7 +7862,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: 0 20 * * 4
+  cron: 11 23 4 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -8546,7 +7938,7 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
-  cron: '@yearly'
+  cron: 11 23 4 */12 *
   decorate: true
   decoration_config:
     skip_cloning: true

@@ -77,9 +77,14 @@
       "optional":true,
       "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-e2e-gcp-rt"}
     },
+    "install-analysis-all":{
+      "optional": true,
+      "multiJobAnalysis": true,
+      "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-install-analysis-all"}
+    },
     "metal-ipi": {
       "maxRetries": 3,
-      "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-e2e-metal-ipi"}
+      "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-e2e-metal-ipi-bm"}
     },
     "metal-ipi-serial": {
       "maxRetries": 3,
@@ -127,10 +132,6 @@
       "optional":true,
       "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-e2e-metal-ipi-ovn-dualstack"}
     },
-    "metal-ipi-virtualmedia": {
-      "optional": true,
-      "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-e2e-metal-ipi-virtualmedia"}
-    },
     "openshift-dedicated-aws": {
       "optional":true,
       "prowJob":{"name":"release-openshift-ocp-osd-aws-nightly-4.11"}
@@ -167,11 +168,6 @@
     "vsphere-techpreview":{
       "optional": true,
       "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-e2e-vsphere-techpreview"}
-    },
-    "vsphere-sdn-ipi-install-analysis":{
-      "optional": true,
-      "multiJobAnalysis": true,
-      "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-install-analysis-vsphere-sdn-ipi"}
     },
     "vsphere-upi-serial":{
       "optional": true,
@@ -229,27 +225,21 @@
       "optional":true,
       "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-e2e-aws-proxy"}
     },
-    "aggregated-aws-sdn-upgrade-4.11-micro":{
+    "aws-sdn-upgrade-4.11-micro":{
       "upgrade":true,
-      "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-e2e-aws-upgrade"},
-      "aggregatedProwJob": {
-        "analysisJobCount": 10
-      }
+      "maxRetries": 3,
+      "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-e2e-aws-upgrade"}
     },
-    "aggregated-azure-ovn-upgrade-4.11-micro": {
+    "azure-ovn-upgrade-4.11-micro": {
       "upgrade":true,
-      "prowJob":{"name":"periodic-ci-openshift-release-master-ci-4.11-e2e-azure-ovn-upgrade"},
-      "aggregatedProwJob": {
-        "analysisJobCount": 10
-      }
+      "maxRetries": 3,
+      "prowJob":{"name":"periodic-ci-openshift-release-master-ci-4.11-e2e-azure-ovn-upgrade"}
     },
-    "aggregated-gcp-ovn-rt-upgrade-4.11-minor": {
+    "gcp-ovn-rt-upgrade-4.11-minor": {
       "upgrade":true,
       "upgradeFrom": "PreviousMinor",
-      "prowJob":{"name":"periodic-ci-openshift-release-master-ci-4.11-upgrade-from-stable-4.10-e2e-gcp-ovn-rt-upgrade"},
-      "aggregatedProwJob": {
-        "analysisJobCount": 10
-      }
+      "maxRetries": 3,
+      "prowJob":{"name":"periodic-ci-openshift-release-master-ci-4.11-upgrade-from-stable-4.10-e2e-gcp-ovn-rt-upgrade"}
     },
     "cnv":{
       "optional":true,
@@ -287,6 +277,10 @@
     "alibaba":{
       "optional":true,
       "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-e2e-alibaba"}
+    },
+    "telco5g":{
+      "optional":true,
+      "prowJob":{"name":"periodic-ci-openshift-release-master-nightly-4.11-e2e-telco5g"}
     }
   }
 }

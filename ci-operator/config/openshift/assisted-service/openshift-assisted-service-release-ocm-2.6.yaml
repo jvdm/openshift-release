@@ -269,9 +269,9 @@ tests:
     make lint
   container:
     from: assisted-service-lint
-  skip_if_only_changed: ^openshift/|^docs/|^sites/|\.md$|^(LICENSE|OWNERS|OWNER_ALIASES)$
+  skip_if_only_changed: ^dashboards/|^openshift/|^docs/|^sites/|\.md$|^(LICENSE|OWNERS|OWNER_ALIASES)$
 - as: verify-generated-code
-  skip_if_only_changed: ^openshift/|^docs/|^sites/|\.md$|^(LICENSE|OWNERS|OWNER_ALIASES)$
+  skip_if_only_changed: ^dashboards/|^openshift/|^docs/|^sites/|\.md$|^(LICENSE|OWNERS|OWNER_ALIASES)$
   steps:
     test:
     - ref: assisted-verify-generated-code
@@ -286,7 +286,7 @@ tests:
   secret:
     mount_path: /tmp/secret
     name: assisted-service-codecov-token
-  skip_if_only_changed: ^openshift/|^docs/|^sites/|\.md$|^(LICENSE|OWNERS|OWNER_ALIASES)$
+  skip_if_only_changed: ^dashboards/|^openshift/|^docs/|^sites/|\.md$|^(LICENSE|OWNERS|OWNER_ALIASES)$
 - as: unit-test-postsubmit
   commands: |
     export REPORTS=/tmp/reports
@@ -340,7 +340,7 @@ tests:
     product: ocp
     timeout: 1h0m0s
     version: "4.10"
-  cron: '@daily'
+  cron: 00 00 */1 * 0-5
   steps:
     allow_best_effort_post_steps: true
     test:
@@ -407,7 +407,7 @@ tests:
     product: ocp
     timeout: 1h0m0s
     version: "4.10"
-  cron: '@daily'
+  cron: 00 00 */1 * 0-5
   steps:
     allow_best_effort_post_steps: true
     test:
@@ -442,7 +442,7 @@ tests:
       OPENSHIFT_INSTALL_RELEASE_IMAGE: release:latest
     workflow: assisted-baremetal-operator-ztp
 - as: e2e-ai-operator-ztp-periodic
-  cron: '@daily'
+  cron: 00 00 */1 * 0-5
   steps:
     cluster_profile: packet-assisted
     dependencies:
@@ -461,7 +461,7 @@ tests:
       NUM_EXTRA_WORKERS: "3"
     workflow: assisted-baremetal-operator-ztp
 - as: e2e-ai-operator-ztp-3masters-periodic
-  cron: '@daily'
+  cron: 00 00 */1 * 0-5
   steps:
     cluster_profile: packet-assisted
     dependencies:
@@ -483,14 +483,6 @@ tests:
       DISCONNECTED: "true"
       IP_STACK: v6
     workflow: assisted-baremetal-operator-ztp
-- as: e2e-ai-operator-ztp-disconnected-periodic
-  cron: '@daily'
-  steps:
-    cluster_profile: packet-assisted
-    env:
-      DISCONNECTED: "true"
-      IP_STACK: v6
-    workflow: assisted-baremetal-operator-ztp
 - as: e2e-ai-operator-ztp-sno-day2-workers
   optional: true
   steps:
@@ -505,7 +497,7 @@ tests:
       NUM_EXTRA_WORKERS: "2"
     workflow: assisted-baremetal-operator-ztp
 - as: e2e-ai-operator-ztp-sno-day2-workers-periodic
-  cron: '@daily'
+  cron: 00 00 */1 * 0-5
   steps:
     cluster_profile: packet-assisted
     dependencies:
@@ -532,7 +524,7 @@ tests:
       NUM_EXTRA_WORKERS: "2"
     workflow: assisted-baremetal-operator-ztp
 - as: e2e-ai-operator-ztp-sno-day2-workers-late-binding-periodic
-  cron: '@daily'
+  cron: 00 00 */1 * 0-5
   steps:
     cluster_profile: packet-assisted
     dependencies:
@@ -556,7 +548,7 @@ tests:
       PROVIDER_IMAGE: cluster-api-provider-agent
     workflow: assisted-baremetal-operator-capi
 - as: e2e-ai-operator-ztp-capi-periodic
-  cron: '@daily'
+  cron: 00 00 */1 * 0-5
   steps:
     cluster_profile: packet-assisted
     dependencies:
@@ -599,7 +591,7 @@ tests:
       ALLOW_CONVERGED_FLOW: "True"
     workflow: assisted-baremetal-operator-ztp
 - as: e2e-ai-operator-ztp-converged-periodic
-  cron: '@daily'
+  cron: 00 00 */1 * 0-5
   steps:
     cluster_profile: packet-assisted
     dependencies:

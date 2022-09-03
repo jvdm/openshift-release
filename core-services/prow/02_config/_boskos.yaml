@@ -1,16 +1,16 @@
 # generated with generate-boskos.py; do not edit directly
 resources:
 - names:
-  - cn-hangzhou--alibabacloud-cn-qe-quota-slice-0
-  - cn-hangzhou--alibabacloud-cn-qe-quota-slice-1
-  - cn-hangzhou--alibabacloud-cn-qe-quota-slice-2
-  - cn-hangzhou--alibabacloud-cn-qe-quota-slice-3
-  - cn-hangzhou--alibabacloud-cn-qe-quota-slice-4
-  - cn-hangzhou--alibabacloud-cn-qe-quota-slice-5
-  - cn-hangzhou--alibabacloud-cn-qe-quota-slice-6
-  - cn-hangzhou--alibabacloud-cn-qe-quota-slice-7
-  - cn-hangzhou--alibabacloud-cn-qe-quota-slice-8
-  - cn-hangzhou--alibabacloud-cn-qe-quota-slice-9
+  - us-east-1--alibabacloud-cn-qe-quota-slice-0
+  - us-east-1--alibabacloud-cn-qe-quota-slice-1
+  - us-east-1--alibabacloud-cn-qe-quota-slice-2
+  - us-east-1--alibabacloud-cn-qe-quota-slice-3
+  - us-east-1--alibabacloud-cn-qe-quota-slice-4
+  - us-east-1--alibabacloud-cn-qe-quota-slice-5
+  - us-east-1--alibabacloud-cn-qe-quota-slice-6
+  - us-east-1--alibabacloud-cn-qe-quota-slice-7
+  - us-east-1--alibabacloud-cn-qe-quota-slice-8
+  - us-east-1--alibabacloud-cn-qe-quota-slice-9
   state: free
   type: alibabacloud-cn-qe-quota-slice
 - names:
@@ -986,6 +986,12 @@ resources:
   state: free
   type: metal-quota-slice
 - names:
+  - nutanix-qe-segment-00
+  - nutanix-qe-segment-01
+  - nutanix-qe-segment-02
+  state: free
+  type: nutanix-qe-quota-slice
+- names:
   - nutanix-segment-00
   - nutanix-segment-01
   - nutanix-segment-02
@@ -1089,6 +1095,10 @@ resources:
   state: free
   type: vsphere-clusterbot-quota-slice
 - names:
+  - ci-segment-55
+  state: free
+  type: vsphere-connected-quota-slice
+- names:
   - qe-discon-segment-60
   - qe-discon-segment-61
   state: free
@@ -1114,10 +1124,6 @@ resources:
   - ci-segment-103
   - ci-segment-104
   - ci-segment-105
-  - ci-segment-79
-  - ci-segment-80
-  - ci-segment-81
-  - ci-segment-82
   - ci-segment-83
   - ci-segment-84
   - ci-segment-85

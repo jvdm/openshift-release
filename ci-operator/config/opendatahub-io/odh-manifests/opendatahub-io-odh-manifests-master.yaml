@@ -7,7 +7,7 @@ build_root:
   image_stream_tag:
     name: release
     namespace: openshift
-    tag: golang-1.13
+    tag: golang-1.17
 images:
 - context_dir: tests/
   dockerfile_path: Dockerfile
@@ -21,12 +21,12 @@ promotion:
 releases:
   initial:
     integration:
-      name: "4.7"
+      name: "4.10"
       namespace: ocp
   latest:
     integration:
       include_built_images: true
-      name: "4.7"
+      name: "4.10"
       namespace: ocp
 resources:
   '*':

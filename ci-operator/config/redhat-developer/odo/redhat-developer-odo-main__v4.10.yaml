@@ -46,7 +46,7 @@ tests:
       timeout: 4h0m0s
     workflow: ipi-aws
 - as: integration-e2e-periodic
-  cron: 0 */6 * * *
+  cron: 15 15  * * 6
   steps:
     cluster_profile: aws
     test:

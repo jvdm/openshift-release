@@ -35,7 +35,7 @@ gcloud --quiet config set compute/region "${GOOGLE_COMPUTE_REGION}"
 LD_PRELOAD=/usr/lib64/libnss_wrapper.so gcloud compute --project "${GOOGLE_PROJECT_ID}" ssh \
   --zone "${GOOGLE_COMPUTE_ZONE}" \
   rhel8user@"${INSTANCE_PREFIX}" \
-  --command "sudo rpm --rebuilddb" 
+  --command "sudo rpm --rebuilddb && sudo dnf install subscription-manager -y"
 
 LD_PRELOAD=/usr/lib64/libnss_wrapper.so gcloud compute --project "${GOOGLE_PROJECT_ID}" ssh \
   --zone "${GOOGLE_COMPUTE_ZONE}" \
@@ -57,6 +57,7 @@ on_exit(){
 trap "on_exit; exit;" EXIT
 
 set -xe
+dnf install subscription-manager -y
 subscription-manager repos --enable rhocp-4.10-for-rhel-8-x86_64-rpms
 dnf install -y cri-o cri-tools firewalld
 systemctl enable crio --now
